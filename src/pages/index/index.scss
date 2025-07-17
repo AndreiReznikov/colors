@@ -1,4 +1,6 @@
+@use "~templates/mixins" as mixins;
 @import "normalize.css";
+@import "~components/header/header";
 @import "~components/footer/footer";
 
 :root {
@@ -6,13 +8,13 @@
   --font-color: #1f2020;
   --bg-color: #fff;
   --bg-dark-color: #000;
+  --base-font-size: 16px;
 }
 
 .index {
-  font-family: Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 400;
+  font-size: var(--base-font-size);
   color: var(--font-color);
   background-color: var(--bg-color);
 

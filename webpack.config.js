@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
-    entry: './src/index.js',
+    entry: './src/pages/index/index.js',
     output: {
       filename: 'bundle.[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
@@ -69,7 +69,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.pug',
+        template: './src/pages/index/index.pug',
         filename: 'index.html',
       }),
       new MiniCssExtractPlugin({
