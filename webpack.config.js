@@ -100,6 +100,7 @@ module.exports = (env, argv) => {
         '~': path.resolve(__dirname, 'src'),
         '~components': `${path.resolve(__dirname, 'src')}/components`,
         '~libs': `${path.resolve(__dirname, 'src')}/libs`,
+        '~utils': `${path.resolve(__dirname, 'src')}/utils`,
         '~fonts': `${path.resolve(__dirname, 'src')}/fonts`,
         '~templates': `${path.resolve(__dirname, 'src')}/templates`,
         '~constants': `${path.resolve(__dirname, 'src')}/constants`,

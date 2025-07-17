@@ -1,8 +1,13 @@
 include ~components/logo/logo
 
 mixin header(options = {})
+  -
+    const { formatPhone } = require('~utils/utils.js');
+    const phoneNumber = options?.number ?? '';
+    const cleanedNumber = formatPhone(phoneNumber);
+
   header.header
-    .header__right-block
+    .header__left-block
       .header__logo-wrapper
         +logo()
       .header__menu-wrapper
@@ -15,6 +20,9 @@ mixin header(options = {})
                   href=link
                 )
                   span.header__menu-text=title
-    .header__left-block
+    .header__right-block
       .header__phone-wrapper
+        a.header__phone-number(
+          href=`tel:${cleanedNumber}`
+        )=phoneNumber
       .header__actions-wrapper
