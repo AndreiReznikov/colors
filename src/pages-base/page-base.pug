@@ -13,6 +13,29 @@ html(class=className lang="ru")
   })
   body(class=`${className}__body`)
     div(class=`${className}__wrapper`)
-      +header()
+      +header({
+        menuItems: [
+          {
+            title: "Продукты",
+            link: "/mock-address/change-me",
+          },
+          {
+            title: "Цвета",
+            link: "/mock-address/change-me",
+          },
+          {
+            title: "Вдохновение",
+            link: "/mock-address/change-me",
+          },
+          {
+            title: "Советы",
+            link: "/mock-address/change-me",
+          },
+          {
+            title: "Найти магазин",
+            link: "/mock-address/change-me",
+          },
+        ]
+      })
       block content
       +footer()

@@ -6,6 +6,15 @@ mixin header(options = {})
       .header__logo-wrapper
         +logo()
       .header__menu-wrapper
+        nav.header__menu
+          ul.header__menu-list
+            each item in options.menuItems
+              - const { title, link } = item;
+              li.header__menu-item
+                a.header__menu-link(
+                  href=link
+                )
+                  span.header__menu-text=title
     .header__left-block
       .header__phone-wrapper
-      .header__action-wrapper
+      .header__actions-wrapper
