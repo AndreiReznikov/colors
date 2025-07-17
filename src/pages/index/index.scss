@@ -4,17 +4,18 @@
 @import "~components/footer/footer";
 
 :root {
-  --main-color: #7bb899;
+  --theme-color: #7bb899;
   --font-color: #1f2020;
   --bg-color: #fff;
   --bg-dark-color: #000;
-  --base-font-size: 16px;
+  --base-size: 16px;
 }
 
 .index {
   font-family: Inter, Arial, sans-serif;
   font-weight: 400;
-  font-size: var(--base-font-size);
+  font-style: normal;
+  font-size: var(--base-size);
   color: var(--font-color);
   background-color: var(--bg-color);
 

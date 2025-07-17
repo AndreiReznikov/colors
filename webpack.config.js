@@ -6,6 +6,7 @@ const PugPlugin = require('pug-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
+  const SRC_PATH = path.resolve(__dirname, 'src');
 
   return {
     entry: './src/pages/index/index.js',
@@ -31,26 +32,26 @@ module.exports = (env, argv) => {
           loader: PugPlugin.loader,
         },
         {
-        test: /\.(scss|css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [['postcss-preset-env']],
+          test: /\.(scss|css)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [['postcss-preset-env']],
+                },
               },
             },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
             },
-          },
-        ],
-      },
+          ],
+        },
         {
           test: /\.(png|jpg|jpeg|gif|svg|webp)$/i,
           type: 'asset/resource',
@@ -96,15 +97,14 @@ module.exports = (env, argv) => {
     },
     resolve: {
       alias: {
-        extensions: ['.js', '.pug', '.scss'],
-        '~': path.resolve(__dirname, 'src'),
-        '~components': `${path.resolve(__dirname, 'src')}/components`,
-        '~libs': `${path.resolve(__dirname, 'src')}/libs`,
-        '~utils': `${path.resolve(__dirname, 'src')}/utils`,
-        '~fonts': `${path.resolve(__dirname, 'src')}/fonts`,
-        '~templates': `${path.resolve(__dirname, 'src')}/templates`,
-        '~constants': `${path.resolve(__dirname, 'src')}/constants`,
-        '~pages-base': `${path.resolve(__dirname, 'src')}/pages-base`,
+        '~': SRC_PATH,
+        '~components': `${SRC_PATH}/components`,
+        '~assets': `${SRC_PATH}/assets`,
+        '~libs': `${SRC_PATH}/libs`,
+        '~utils': `${SRC_PATH}/utils`,
+        '~templates': `${SRC_PATH}/templates`,
+        '~constants': `${SRC_PATH}/constants`,
+        '~pages-base': `${SRC_PATH}/pages-base`,
       },
     },
     devtool: isProduction ? false : 'source-map',

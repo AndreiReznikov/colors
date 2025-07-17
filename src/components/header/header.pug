@@ -21,8 +21,22 @@ mixin header(options = {})
                 )
                   span.header__menu-text=title
     .header__right-block
-      .header__phone-wrapper
-        a.header__phone-number(
-          href=`tel:${cleanedNumber}`
-        )=phoneNumber
-      .header__actions-wrapper
+      if options.number
+        .header__phone-wrapper
+          a.header__phone-number(
+            href=`tel:${cleanedNumber}`
+          )=phoneNumber
+          span.header__phone-text=options.phoneText
+      .header__icons-wrapper
+        nav.header__icons-menu
+          ul.header__icons-menu-list
+            each item in options.icons
+              - const { link, src, ariaLabel } = item;
+              li.header__icons-menu-item
+                a.header__icons-menu-link(
+                  href=link
+                  aria-label=ariaLabel
+                )
+                  img.header__icon(src=src)
+            li.header__icons-menu-item
+              .header__icons-cart 0
