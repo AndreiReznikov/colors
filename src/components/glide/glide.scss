@@ -1,0 +1,11 @@
+.glide {
+  &__track, &__slides {
+    height: 560px;
+  }
+
+  &__image {
+    width: 100%;
+    object-position: left center;
+    object-fit: cover;
+  }
+}

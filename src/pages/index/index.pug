@@ -1,4 +1,5 @@
 extends ~pages-base/page-base
+include ~components/glide/glide
 
 block vars
   -
@@ -9,3 +10,9 @@ block vars
 
 block content
   main.index__main
+    .index__glide-wrapper
+      +glide([
+        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
+        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
+        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
+      ])
