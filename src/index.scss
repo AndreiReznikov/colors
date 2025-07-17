@@ -1,7 +1,11 @@
+@import "normalize.css";
+@import "~components/footer/footer";
+
 :root {
   --main-color: #7bb899;
   --font-color: #1f2020;
-  --background-color: #fff;
+  --bg-color: #fff;
+  --bg-dark-color: #000;
 }
 
 .index {
@@ -10,7 +14,23 @@
   font-weight: normal;
   font-size: 14px;
   color: var(--font-color);
-  background-color: var(--background-color);
+  background-color: var(--bg-color);
+
+  &,
+  &__body {
+    height: 100%;
+    margin: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__main {
+    flex: 1;
+  }
 
   &_non-scrollable {
     position: fixed;

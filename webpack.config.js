@@ -98,6 +98,7 @@ module.exports = (env, argv) => {
       alias: {
         extensions: ['.js', '.pug', '.scss'],
         '~': path.resolve(__dirname, 'src'),
+        '~components': `${path.resolve(__dirname, 'src')}/components`,
         '~libs': `${path.resolve(__dirname, 'src')}/libs`,
         '~fonts': `${path.resolve(__dirname, 'src')}/fonts`,
         '~templates': `${path.resolve(__dirname, 'src')}/templates`,
