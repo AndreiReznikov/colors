@@ -22,8 +22,8 @@ $circle-margin: 0.4375rem;
     z-index: 1;
 
     &::after {
-      position: absolute;
       content: "";
+      position: absolute;
       width: $circle-width;
       height: $circle-width;
       margin-right: $circle-margin;
