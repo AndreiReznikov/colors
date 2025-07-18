@@ -1,6 +1,7 @@
 @use "~templates/mixins" as mixins;
 @import "normalize.css";
 @import "~components/card/card";
+@import "~components/cart/cart";
 @import "~components/glide/glide";
 @import "~components/header/header";
 @import "~components/toggle/toggle";
@@ -13,6 +14,7 @@
   --bg-dark-color: #000;
   --bg-gr-color: #f2f2f2;
   --text-color: #1f2020;
+  --rgba-dark-70: rgba(0, 0, 0, 0.7);
   --rgba-dark-40: rgba(0, 0, 0, 0.4);
   --rgba-dark-10: rgba(0, 0, 0, 0.1);
   --base-size: 16px;
