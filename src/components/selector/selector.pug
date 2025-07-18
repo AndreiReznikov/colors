@@ -1,0 +1,14 @@
+mixin selector(options = {})
+  -
+    const { items, selected = 0 } = options;
+    const selectedItem = items[selected];
+
+  .selector
+    .selector__button-wrapper
+      button.selector__button=selectedItem
+    .selector__wrapper
+      ul.selector__list
+        each item, index in items
+          li.selector__item(data-id=index)=item
+
+      .selector__scrim

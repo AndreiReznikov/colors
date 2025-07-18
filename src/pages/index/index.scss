@@ -2,10 +2,11 @@
 @import "normalize.css";
 @import "~components/card/card";
 @import "~components/cart/cart";
+@import "~components/footer/footer";
 @import "~components/glide/glide";
 @import "~components/header/header";
+@import "~components/selector/selector";
 @import "~components/toggle/toggle";
-@import "~components/footer/footer";
 
 :root {
   --theme-color: #7bb899;

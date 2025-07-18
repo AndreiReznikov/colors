@@ -2,6 +2,7 @@ extends ~pages-base/page-base
 include ~components/glide/glide
 include ~components/card/card
 include ~components/cart/cart
+include ~components/selector/selector
 include ~components/toggle/toggle
 
 block vars
@@ -23,6 +24,15 @@ block content
         { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
         { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
       ])
+      +selector({
+        selected: 1,
+        items: [
+          'Сначала дорогие',
+          'Сначала недорогие',
+          'Сначала популярные',
+          'Сначала новые',
+        ]
+      })
       +card({
         title: "Краска Wallquest, Brownsone MS90102",
         price: "6000",
