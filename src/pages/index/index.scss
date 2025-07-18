@@ -1,5 +1,6 @@
 @use "~templates/mixins" as mixins;
 @import "normalize.css";
+@import "~components/card/card";
 @import "~components/glide/glide";
 @import "~components/header/header";
 @import "~components/footer/footer";
@@ -10,6 +11,7 @@
   --bg-color: #fff;
   --bg-dark-color: #000;
   --rgba-dark-40: rgba(0, 0, 0, 0.4);
+  --rgba-dark-10: rgba(0, 0, 0, 0.1);
   --base-size: 16px;
 }
 

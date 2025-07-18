@@ -1,6 +1,6 @@
 mixin glide(images, options = {})
   -
-    const defaultOptions = { perView: 1, autoplay: false, arrows: true, dots: true };
+    const defaultOptions = { perView: 1, arrows: true, dots: true };
     const settings = { ...defaultOptions, ...options };
 
   .glide.js-glide
@@ -12,7 +12,7 @@ mixin glide(images, options = {})
               src=img.src,
               alt=img.alt,
               loading="lazy"
-              width="800",
+              width="1920",
               height="560"
             )
 

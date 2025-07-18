@@ -1,0 +1,17 @@
+mixin card(options = {})
+  .card
+    .card__image-wrapper
+      img.card__image(src=options.img alt=options.altText)
+    .card__title-wrapper
+      h3.card__title=options.title
+    .card__bottom-wrapper
+      .card__price-wrapper
+        span.card__price=options.price
+        span.card__currency=' ' + options.currency
+      .card__actions-wrapper
+        if options.added
+          button.card__decrement-button -
+          span.card__count=options.addedCount
+          button.card__increment-button +
+        else
+          button.card__cart-button +
