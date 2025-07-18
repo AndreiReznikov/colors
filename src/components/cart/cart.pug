@@ -1,3 +1,5 @@
+include ~components/cart-item/cart-item
+
 mixin cart(options = {})
   .cart
     .cart__wrapper
@@ -5,5 +7,13 @@ mixin cart(options = {})
         h2.cart__title Корзина
         .cart__close-button-wrapper
           button.cart__close-button(aria-label="Закрыть корзину")
+      .cart__items-wrapper
+        +cart-item({
+          title: "Краска Wallquest, Brownsone MS90102",
+          price: "6000",
+          currency: "₽",
+          img: "../assets/img/products/product-0.webp",
+        })
+      .cart__order-wrapper
 
     .cart__scrim

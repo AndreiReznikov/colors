@@ -1,3 +1,5 @@
+@import "~components/cart-item/cart-item";
+
 .cart {
   &__wrapper {
     position: fixed;
@@ -33,7 +35,6 @@
     border: 0.0625rem solid var(--rgba-dark-10);
     border-radius: 50%;
     background: transparent;
-    outline: none;
     cursor: pointer;
   }
 
