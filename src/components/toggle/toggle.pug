@@ -1,0 +1,8 @@
+mixin toggle(options = {})
+  label.toggle
+    input.toggle__input(
+      type="checkbox"
+      checked=options.checked
+    )
+    span.toggle__custom-input
+    span.toggle__text=options.text

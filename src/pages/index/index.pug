@@ -1,6 +1,7 @@
 extends ~pages-base/page-base
 include ~components/glide/glide
 include ~components/card/card
+include ~components/toggle/toggle
 
 block vars
   -
@@ -25,4 +26,21 @@ block content
         price: "6000",
         currency: "₽",
         img: "../assets/img/products/product-0.webp",
+      })
+      +toggle({
+        checked: true,
+        text: "Новинки",
+      })
+      +toggle({
+        text: "Есть в наличии",
+      })
+      +toggle({
+        text: "Контрактные",
+      })
+      +toggle({
+        text: "Эксклюзивные",
+        checked: true,
+      })
+      +toggle({
+        text: "Распродажа",
       })

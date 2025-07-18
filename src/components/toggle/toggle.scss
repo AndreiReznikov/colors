@@ -1,0 +1,56 @@
+$toggle-width: 2.25rem;
+$toggle-height: 1.375rem;
+$circle-width: 0.5rem;
+$circle-margin: 0.4375rem;
+
+.toggle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0.625rem;
+  line-height: 1.5rem;
+  cursor: pointer;
+
+  &__custom-input {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: $toggle-width;
+    height: $toggle-height;
+    background-color: var(--bg-gr-color);
+    border-radius: 2.5rem;
+    z-index: 1;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: $circle-width;
+      height: $circle-width;
+      margin-right: $circle-margin;
+      margin-left: $circle-margin;
+      background: var(--text-color);
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+  }
+
+  &__text {
+    padding-left: 3.125rem;
+    font-size: .75rem;
+    color: var(--text-color);
+    text-transform: uppercase;
+  }
+
+  &__input {
+    position: absolute;
+    appearance: none;
+  }
+
+  &__input:checked + &__custom-input {
+    background-color: var(--theme-color);
+  }
+
+  &__input:checked + &__custom-input::after {
+    transform: translateX($toggle-width - $circle-width - 2 * $circle-margin);
+  }
+}
