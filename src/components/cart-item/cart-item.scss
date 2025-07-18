@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .75rem 0;
+    padding: 0.75rem 0;
     border-top: 0.0625rem solid var(--rgba-dark-10);
   }
 
@@ -32,8 +32,13 @@
     font-size: 20px;
     background: var(--bg-gr-color);
     border: none;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     cursor: pointer;
+  }
+
+  &__decrement:hover,
+  &__increment:hover {
+    background: var(--bg-gr-color-dark);
   }
 
   &__counter {

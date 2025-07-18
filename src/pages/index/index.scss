@@ -9,10 +9,12 @@
 
 :root {
   --theme-color: #7bb899;
+  --theme-color-dark: #7ca993;
   --font-color: #1f2020;
   --bg-color: #fff;
   --bg-dark-color: #000;
   --bg-gr-color: #f2f2f2;
+  --bg-gr-color-dark: #dddada;
   --text-color: #1f2020;
   --rgba-dark-70: rgba(0, 0, 0, 0.7);
   --rgba-dark-40: rgba(0, 0, 0, 0.4);
@@ -27,6 +29,10 @@
   font-size: var(--base-size);
   color: var(--font-color);
   background-color: var(--bg-color);
+
+  & * {
+    box-sizing: border-box;
+  }
 
   &,
   &__body {
