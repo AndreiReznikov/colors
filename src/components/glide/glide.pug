@@ -1,6 +1,7 @@
 mixin glide(images, options = {})
-  - const defaultOptions = { perView: 1, gap: 20, autoplay: false, arrows: true, dots: true };
-  - const settings = { ...defaultOptions, ...options };
+  -
+    const defaultOptions = { perView: 1, autoplay: false, arrows: true, dots: true };
+    const settings = { ...defaultOptions, ...options };
 
   .glide.js-glide
     .glide__track(data-glide-el="track")
@@ -9,16 +10,16 @@ mixin glide(images, options = {})
           .glide__slide
             img.glide__image(
               src=img.src,
-              alt=img.alt || "Slide",
-              loading="lazy",
+              alt=img.alt,
+              loading="lazy"
               width="800",
-              height="600"
+              height="560"
             )
 
     if settings.arrows
       .glide__arrows(data-glide-el="controls")
-        button.glide__arrow.glide__arrow--left(data-glide-dir="<") ←
-        button.glide__arrow.glide__arrow--right(data-glide-dir=">") →
+        button.glide__arrow.glide__arrow--left(data-glide-dir="<")
+        button.glide__arrow.glide__arrow--right(data-glide-dir=">")
 
     if settings.dots
       .glide__bullets(data-glide-el="controls[nav]")

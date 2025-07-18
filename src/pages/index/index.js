@@ -10,7 +10,7 @@ class Colors {
 
   _initializeGlide() {
     this.glide = new GlideLib()
-    this.glide.initializePlugin('.js-glide');
+    this.glide.initializePlugin('.js-glide', { animationDuration: 1200 });
   }
 }
 

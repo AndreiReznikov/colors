@@ -1,11 +1,68 @@
 .glide {
-  &__track, &__slides {
-    height: 560px;
+  &__track,
+  &__slides {
+    height: 35rem;
   }
 
   &__image {
     width: 100%;
     object-position: left center;
     object-fit: cover;
+  }
+
+  &__arrow {
+    width: 5rem;
+    height: 100%;
+    border: none;
+    box-shadow: none;
+  }
+
+  &__arrow--left {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+
+    &::after {
+      content: "";
+      width: 5rem;
+      height: 5rem;
+      background-image: url("../../assets/icons/arrow-left.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__arrow--right {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+
+    &::after {
+      content: "";
+      width: 5rem;
+      height: 5rem;
+      background-image: url("../../assets/icons/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__bullets {
+    padding: 1rem;
+    border-radius: 1.5rem;
+    background-color: var(--rgba-dark-40);
+  }
+
+  &__bullet {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    opacity: 0.2;
+
+    &--active {
+      opacity: 1;
+    }
   }
 }
