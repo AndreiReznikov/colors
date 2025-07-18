@@ -29,7 +29,7 @@
   &__increment {
     width: 2.5rem;
     height: 1.5rem;
-    font-size: 20px;
+    font-size: 1.25rem;
     background: var(--bg-gr-color);
     border: none;
     border-radius: 0.25rem;
@@ -45,7 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 48px;
+    min-width: 3rem;
   }
 
   &__close-button {
