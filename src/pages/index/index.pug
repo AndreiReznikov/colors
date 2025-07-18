@@ -13,7 +13,7 @@ block vars
     const description = 'Colors marketplace';
 
 block content
-  main.index__main
+  .index__container
     .index__glide-wrapper
       +cart()
       +glide([
@@ -24,35 +24,81 @@ block content
         { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
         { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
       ])
-      +selector({
-        selected: 1,
-        items: [
-          'Сначала дорогие',
-          'Сначала недорогие',
-          'Сначала популярные',
-          'Сначала новые',
-        ]
-      })
-      +card({
-        title: "Краска Wallquest, Brownsone MS90102",
-        price: "6000",
-        currency: "₽",
-        img: "../assets/img/products/product-0.webp",
-      })
-      +toggle({
-        checked: true,
-        text: "Новинки",
-      })
-      +toggle({
-        text: "Есть в наличии",
-      })
-      +toggle({
-        text: "Контрактные",
-      })
-      +toggle({
-        text: "Эксклюзивные",
-        checked: true,
-      })
-      +toggle({
-        text: "Распродажа",
-      })
+    main.index__main
+      section.index__filters-section
+        .index__toggle-wrapper
+          +toggle({
+            checked: true,
+            text: "Новинки",
+          })
+          +toggle({
+            text: "Есть в наличии",
+          })
+          +toggle({
+            text: "Контрактные",
+          })
+          +toggle({
+            text: "Эксклюзивные",
+            checked: true,
+          })
+          +toggle({
+            text: "Распродажа",
+          })
+
+      section.index__products-section
+        .index__sort-wrapper
+          span.index__products-count 412 товаров
+          .index__selector-wrapper
+            +selector({
+              selected: 1,
+              items: [
+                'Сначала дорогие',
+                'Сначала недорогие',
+                'Сначала популярные',
+                'Сначала новые',
+              ]
+            })
+        .index__products-wrapper
+          ul.index__products-list
+            li.index__product-item
+              +card({
+                title: "Краска Wallquest, Brownsone MS90102",
+                price: "6000",
+                currency: "₽",
+                img: "../assets/img/products/product-0.webp",
+              })
+            li.index__product-item
+              +card({
+                title: "Краска Wallquest, Brownsone MS90102",
+                price: "6000",
+                currency: "₽",
+                img: "../assets/img/products/product-0.webp",
+              })
+            li.index__product-item
+              +card({
+                title: "Краска Wallquest, Brownsone MS90102",
+                price: "6000",
+                currency: "₽",
+                img: "../assets/img/products/product-0.webp",
+              })
+            li.index__product-item
+              +card({
+                title: "Краска Wallquest, Brownsone MS90102",
+                price: "6000",
+                currency: "₽",
+                img: "../assets/img/products/product-0.webp",
+              })
+            li.index__product-item
+              +card({
+                title: "Краска Wallquest, Brownsone MS90102",
+                price: "6000",
+                currency: "₽",
+                img: "../assets/img/products/product-0.webp",
+              })
+            li.index__product-item
+              +card({
+                title: "Краска Wallquest, Brownsone MS90102",
+                price: "6000",
+                currency: "₽",
+                img: "../assets/img/products/product-0.webp",
+              })

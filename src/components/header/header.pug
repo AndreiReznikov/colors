@@ -7,36 +7,37 @@ mixin header(options = {})
     const cleanedNumber = formatPhone(phoneNumber);
 
   header.header
-    .header__left-block
-      .header__logo-wrapper
-        +logo()
-      .header__menu-wrapper
-        nav.header__menu
-          ul.header__menu-list
-            each item in options.menuItems
-              - const { title, link } = item;
-              li.header__menu-item
-                a.header__menu-link(
-                  href=link
-                )
-                  span.header__menu-text=title
-    .header__right-block
-      if options.number
-        .header__phone-wrapper
-          a.header__phone-number(
-            href=`tel:${cleanedNumber}`
-          )=phoneNumber
-          span.header__phone-text=options.phoneText
-      .header__icons-wrapper
-        nav.header__icons-menu
-          ul.header__icons-menu-list
-            each item in options.icons
-              - const { link, src, ariaLabel } = item;
+    .header__wrapper
+      .header__left-block
+        .header__logo-wrapper
+          +logo()
+        .header__menu-wrapper
+          nav.header__menu
+            ul.header__menu-list
+              each item in options.menuItems
+                - const { title, link } = item;
+                li.header__menu-item
+                  a.header__menu-link(
+                    href=link
+                  )
+                    span.header__menu-text=title
+      .header__right-block
+        if options.number
+          .header__phone-wrapper
+            a.header__phone-number(
+              href=`tel:${cleanedNumber}`
+            )=phoneNumber
+            span.header__phone-text=options.phoneText
+        .header__icons-wrapper
+          nav.header__icons-menu
+            ul.header__icons-menu-list
+              each item in options.icons
+                - const { link, src, ariaLabel } = item;
+                li.header__icons-menu-item
+                  a.header__icons-menu-link(
+                    href=link
+                    aria-label=ariaLabel
+                  )
+                    img.header__icon(src=src)
               li.header__icons-menu-item
-                a.header__icons-menu-link(
-                  href=link
-                  aria-label=ariaLabel
-                )
-                  img.header__icon(src=src)
-            li.header__icons-menu-item
-              .header__icons-cart 0
+                .header__icons-cart 0
