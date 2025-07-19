@@ -1,3 +1,5 @@
+import { NON_SCROLLABLE_MODIFIER } from "~constants/constants";
+
 export const formatPhone = (number = '') => {
   if (typeof number !== 'string') return;
 
@@ -11,7 +13,7 @@ export const toggleScroll = () => {
   if (!htmlElement) return;
 
   const nonScrollableClass = Array.from(htmlElement.classList).find(className =>
-    className.endsWith('_non-scrollable')
+    className.endsWith(NON_SCROLLABLE_MODIFIER)
   );
 
   if (nonScrollableClass) {
@@ -20,6 +22,6 @@ export const toggleScroll = () => {
 
   if (htmlElement.classList.length > 0) {
     const firstClass = htmlElement.classList[0];
-    htmlElement.classList.add(`${firstClass}_non-scrollable`);
+    htmlElement.classList.add(`${firstClass}${NON_SCROLLABLE_MODIFIER}`);
   }
 };
