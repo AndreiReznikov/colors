@@ -101,6 +101,7 @@ module.exports = (env, argv) => {
         '~components': `${SRC_PATH}/components`,
         '~assets': `${SRC_PATH}/assets`,
         '~libs': `${SRC_PATH}/libs`,
+        '~store': `${SRC_PATH}/store`,
         '~utils': `${SRC_PATH}/utils`,
         '~templates': `${SRC_PATH}/templates`,
         '~constants': `${SRC_PATH}/constants`,
