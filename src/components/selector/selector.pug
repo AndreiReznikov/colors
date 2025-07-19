@@ -18,6 +18,6 @@ mixin selector(options = {})
     .selector__wrapper
       ul(class=listClassName)
         each item, index in items
-          li.selector__item(data-id=index)=item
+          li.selector__item(data-id=index tabindex=0)=item
 
       .selector__scrim
