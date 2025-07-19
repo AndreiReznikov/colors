@@ -1,5 +1,14 @@
 mixin selector(options = {})
   -
+    let listClassName = 'selector__list';
+    let currentListClassName = '';
+
+    currentListClassName += options.positionX ? ` ${listClassName}_${options.positionX}` : '';
+    currentListClassName += options.positionY ? ` ${listClassName}_${options.positionY}` : '';
+
+    listClassName += currentListClassName;
+
+
     const { items, selected = 0 } = options;
     const selectedItem = items[selected];
 
@@ -7,7 +16,7 @@ mixin selector(options = {})
     .selector__button-wrapper
       button.selector__button=selectedItem
     .selector__wrapper
-      ul.selector__list
+      ul(class=listClassName)
         each item, index in items
           li.selector__item(data-id=index)=item
 
