@@ -10,18 +10,18 @@ class Header {
 
   _findElements() {
     this.cartButtonElement = document.querySelector(`.${BLOCK_CLASS}__cart-button`);
-    this.cartElement = document.querySelector(`.${BLOCK_CLASS}__cart-wrapper`);
+    this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__cart-wrapper`);
   }
 
   _handleOpenCart(onAction) {
-    this.cartElement.classList.add(`${BLOCK_CLASS}__cart-wrapper${VISIBLE_MODIFIER}`);
+    this.cartWrapperElement.classList.add(`${BLOCK_CLASS}__cart-wrapper${VISIBLE_MODIFIER}`);
     onAction?.();
   }
 
   _addEventListeners(options) {
     this.cartButtonElement.addEventListener('click',
       () => this._handleOpenCart(options.toggleScroll),
-    )
+    );
   }
 }
 

@@ -2,6 +2,7 @@ mixin toggle(options = {})
   label.toggle
     input.toggle__input(
       type="checkbox"
+      value=options.value
       checked=options.checked
     )
     span.toggle__custom-input
