@@ -1,7 +1,6 @@
 extends ~pages-base/page-base
 include ~components/glide/glide
 include ~components/card/card
-include ~components/cart/cart
 include ~components/selector/selector
 include ~components/toggle/toggle
 
@@ -15,7 +14,6 @@ block vars
 block content
   .index__container
     .index__glide-wrapper
-      +cart()
       +glide([
         { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
         { src: "../assets/img/colors.webp", alt: "Изображение вазы" },

@@ -1,3 +1,4 @@
+include ~components/cart/cart
 include ~components/logo/logo
 
 mixin header(options = {})
@@ -40,4 +41,8 @@ mixin header(options = {})
                   )
                     img.header__icon(src=src)
               li.header__icons-menu-item
-                .header__icons-cart 0
+                button.header__cart-button(
+                  aria-label="Открыть корзину"
+                ) 0
+    .header__cart-wrapper
+      +cart()
