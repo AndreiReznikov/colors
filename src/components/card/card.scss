@@ -4,8 +4,8 @@
   justify-content: space-between;
   width: 17.375rem;
   min-height: 23.5rem;
-  padding-bottom: .875rem;
-  border-bottom: .0625rem solid var(--rgba-dark-10);
+  padding-bottom: 0.875rem;
+  border-bottom: 0.0625rem solid var(--rgba-dark-10);
 
   &__image-wrapper {
     width: 17.375rem;
@@ -39,10 +39,14 @@
     height: 2rem;
     font-size: 1.5rem;
     color: var(--bg-dark-color);
-    background-color: var(--theme-color);
-    border-radius: .5rem;
+    background-color: var(--bg-gr-color);
+    border-radius: 0.5rem;
     border: none;
     cursor: pointer;
+
+    &:hover {
+      background-color: var(--theme-color);
+    }
   }
 
   &:hover &__cart-button {
