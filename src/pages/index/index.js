@@ -1,4 +1,5 @@
 import GlideLib from '~libs/glideLib';
+import '~components/cart';
 import '~components/header';
 import '~templates/fonts.scss';
 
