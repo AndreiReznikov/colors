@@ -1,0 +1,10 @@
+include ~components/toggle/toggle
+
+mixin toggle-list(items = [])
+  .toggle-list
+    ul.toggle-list__list
+      each item in items
+        - const { text, value, checked } = item;
+        li.toggle-list__item
+          +toggle({ text, value, checked })
+

@@ -14,7 +14,8 @@ mixin header(options = {})
     .header__wrapper
       .header__left-block
         .header__logo-wrapper
-          +logo()
+          a.header__logo__link(href="/")
+            +logo()
         .header__menu-wrapper
           nav.header__menu
             ul.header__menu-list
@@ -31,7 +32,7 @@ mixin header(options = {})
             a.header__phone-number(
               href=`tel:${cleanedNumber}`
             )=phoneNumber
-            span.header__phone-text=options.phoneText
+              span.header__phone-text=options.phoneText
         .header__icons-wrapper
           nav.header__icons-menu
             ul.header__icons-menu-list

@@ -1,0 +1,9 @@
+@import "~components/toggle/toggle";
+
+.toggle-list {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}

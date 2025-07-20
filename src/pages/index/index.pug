@@ -2,7 +2,7 @@ extends ~pages-base/page-base
 include ~components/glide/glide
 include ~components/card/card
 include ~components/selector/selector
-include ~components/toggle/toggle
+include ~components/toggle-list/toggle-list
 
 block vars
   -
@@ -28,28 +28,30 @@ block content
     main.index__main
       section.index__filters-section
         .index__toggle-wrapper
-          +toggle({
-            checked: true,
-            text: "Новинки",
-            value: "new",
-          })
-          +toggle({
-            text: "Есть в наличии",
-            value: "available",
-          })
-          +toggle({
-            text: "Контрактные",
-            value: "contract",
-          })
-          +toggle({
-            text: "Эксклюзивные",
-            checked: true,
-            value: "exclusive",
-          })
-          +toggle({
-            text: "Распродажа",
-            value: "sale",
-          })
+          +toggle-list([
+            {
+              checked: true,
+              text: "Новинки",
+              value: "new",
+            },
+            {
+              text: "Есть в наличии",
+              value: "available",
+            },
+            {
+              text: "Контрактные",
+              value: "contract",
+            },
+            {
+              text: "Эксклюзивные",
+              checked: true,
+              value: "exclusive",
+            },
+            {
+              text: "Распродажа",
+              value: "sale",
+            }
+          ])
 
       section.index__products-section
         .index__sort-wrapper

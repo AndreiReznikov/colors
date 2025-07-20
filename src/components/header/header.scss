@@ -47,12 +47,9 @@
     }
   }
 
-  &__phone-wrapper {
+  &__phone-number {
     display: flex;
     flex-direction: column;
-  }
-
-  &__phone-number {
     font-weight: 500;
     color: var(--text-color);
     text-decoration: none;
