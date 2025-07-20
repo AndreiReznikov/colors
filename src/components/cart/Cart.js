@@ -2,6 +2,7 @@ import { VISIBLE_MODIFIER } from "~constants/constants";
 import { clearCart, decrementCartItem, incrementCartItem, removeFromCart } from "~reducers/cart";
 import { store } from "~store";
 
+const EMPTY_CART_TEXT = 'Корзина пуста';
 const BLOCK_CLASS = 'cart';
 
 class Cart {
@@ -16,9 +17,11 @@ class Cart {
     this.closeButtonElement = document.querySelector(`.${BLOCK_CLASS}__close-button`);
     this.cartElement = document.querySelector(`.${BLOCK_CLASS}`);
     this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__wrapper`);
+    this.cartItemsControlWrapperElement = document.querySelector(`.${BLOCK_CLASS}__items-control-wrapper`);
     this.cartItemsCountElement = document.querySelector(`.${BLOCK_CLASS}__items-count`);
     this.cartItemsListElement = document.querySelector(`.${BLOCK_CLASS}__items-list`);
     this.cartSumElement = document.querySelector(`.${BLOCK_CLASS}__sum`);
+    this.cartEmptyTextElement = document.querySelector(`.${BLOCK_CLASS}__empty-text`);
     this.cartOrderButtonElement = document.querySelector(`.${BLOCK_CLASS}__order-button`);
     this.cartClearButtonElement = document.querySelector(`.${BLOCK_CLASS}__clear-button`);
     this.scrimElement = document.querySelector(`.${BLOCK_CLASS}__scrim`);
@@ -94,7 +97,9 @@ class Cart {
     this._calculateTotalCount();
     this._setCartItemEvents();
     this._setOrderButtonProp();
-    this.cartSumElement.innerHTML = this.totalSum;
+    this._setEmptyText();
+    this._setCartItemsControlProps();
+    this.cartSumElement.innerHTML = this.localeTotalSum;
     this.cartItemsCountElement.innerHTML = this.totalCount;
   }
 
@@ -115,6 +120,28 @@ class Cart {
     }
 
     this.cartOrderButtonElement.disabled = true;
+  }
+
+  _setEmptyText() {
+    if (!this.cartEmptyTextElement) return;
+
+    const cartLength = store.getState().cart.length;
+
+    if (!!cartLength) {
+      return this.cartEmptyTextElement.textContent = '';
+    }
+
+    this.cartEmptyTextElement.textContent = EMPTY_CART_TEXT;
+  }
+
+  _setCartItemsControlProps() {
+    const cartLength = store.getState().cart.length;
+
+    if (!!cartLength) {
+      return this.cartItemsControlWrapperElement.style.display = 'flex';
+    }
+
+    this.cartItemsControlWrapperElement.style.display = 'none';
   }
 
   _setCartItemEvents() {
@@ -166,6 +193,8 @@ class Cart {
               this._calculateTotalSum();
               this._calculateTotalCount();
               this._setOrderButtonProp();
+              this._setEmptyText();
+              this._setCartItemsControlProps();
               this.cartSumElement.innerHTML = this.localeTotalSum;
               this.cartItemsCountElement.innerHTML = this.totalCount;
             }, 3000);
@@ -180,6 +209,8 @@ class Cart {
           }
 
           this._setOrderButtonProp();
+          this._setEmptyText();
+          this._setCartItemsControlProps();
         });
       });
   }
@@ -190,13 +221,17 @@ class Cart {
     this.localeTotalSum = 0;
     this.cartSumElement.innerHTML = 0;
     this.cartItemsCountElement.innerHTML = 0;
-    this.cartItemsListElement.innerHTML = 'Корзина пуста';
+    this.cartItemsListElement.innerHTML = '';
     this._setOrderButtonProp();
+    this._setEmptyText();
+    this._setCartItemsControlProps();
   }
 
   _addSubscribes() {
     store.subscribe('ADD_TO_CART', this._renderCartItems.bind(this));
     store.subscribe('ADD_TO_CART', this._setOrderButtonProp.bind(this));
+    store.subscribe('ADD_TO_CART', this._setEmptyText.bind(this));
+    store.subscribe('ADD_TO_CART', this._setCartItemsControlProps.bind(this));
   }
 
   _addEventListeners(options) {

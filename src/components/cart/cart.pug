@@ -4,6 +4,7 @@ mixin cart(options = {})
   -
     const { store } = require('~store');
     const cart = store.getState().cart;
+    const cartLength = cart.length;
     const cartCount = cart.reduce((total, item) => total += item.count, 0);
 
   .cart
@@ -17,6 +18,7 @@ mixin cart(options = {})
         .cart__clear-button-wrapper
           button.cart__clear-button=options.clearText
       .cart__items-wrapper
+        span.cart__empty-text=!cartLength ? options.emptyText : ''
         ul.cart__items-list
           each item in cart
             - const { id, title, totalPrice, currency, img, count } = item;
