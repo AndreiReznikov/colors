@@ -1,5 +1,5 @@
 import { VISIBLE_MODIFIER } from "~constants/constants";
-import { decrementCartItem, incrementCartItem, removeFromCart } from "~reducers/cart";
+import { clearCart, decrementCartItem, incrementCartItem, removeFromCart } from "~reducers/cart";
 import { store } from "~store";
 
 const BLOCK_CLASS = 'cart';
@@ -19,6 +19,7 @@ class Cart {
     this.cartItemsListElement = document.querySelector(`.${BLOCK_CLASS}__items-list`);
     this.cartSumElement = document.querySelector(`.${BLOCK_CLASS}__sum`);
     this.cartOrderButtonElement = document.querySelector(`.${BLOCK_CLASS}__order-button`);
+    this.cartClearButtonElement = document.querySelector(`.${BLOCK_CLASS}__clear-button`);
     this.scrimElement = document.querySelector(`.${BLOCK_CLASS}__scrim`);
     this.cartParentElement = this.cartElement.parentElement;
   }
@@ -169,6 +170,15 @@ class Cart {
       });
   }
 
+  _clearCart() {
+    store.dispatch(clearCart());
+    this.totalSum = 0;
+    this.localeTotalSum = 0;
+    this.cartSumElement.innerHTML = 0;
+    this.cartItemsListElement.innerHTML = 'Корзина пуста';
+    this._setOrderButtonProp();
+  }
+
   _addSubscribes() {
     store.subscribe('ADD_TO_CART', this._renderCartItems.bind(this));
     store.subscribe('ADD_TO_CART', this._setOrderButtonProp.bind(this));
@@ -177,6 +187,9 @@ class Cart {
   _addEventListeners(options) {
     this.closeButtonElement.addEventListener('click',
       () => this._handleCloseCart(options.toggleScroll),
+    );
+    this.cartClearButtonElement.addEventListener('click',
+      () => this._clearCart(),
     );
     this.scrimElement.addEventListener('click',
       (event) => this._clickOutsideCart(event, options.toggleScroll),

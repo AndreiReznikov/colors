@@ -1,5 +1,6 @@
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const CLEAR_CART = 'CLEAR_CART';
 export const INCREMENT_CART_ITEM = 'INCREMENT_CART_ITEM';
 export const DECREMENT_CART_ITEM = 'DECREMENT_CART_ITEM';
 
@@ -13,6 +14,13 @@ export const addToCart = payload => {
 export const removeFromCart = payload => {
   return {
     type: REMOVE_FROM_CART,
+    payload,
+  };
+};
+
+export const clearCart = payload => {
+  return {
+    type: CLEAR_CART,
     payload,
   };
 };
@@ -42,10 +50,13 @@ export const cart = {
       return previousState;
     }
 
-    return [...previousState, { ...payload, totalPrice: payload?.price, count: 1}];
+    return [...previousState, { ...payload, totalPrice: payload?.price, count: 1 }];
   },
   [REMOVE_FROM_CART](previousState = [], payload) {
     return previousState.filter(product => product.id !== payload?.id);
+  },
+  [CLEAR_CART](previousState = [], payload) {
+    return [];
   },
   [INCREMENT_CART_ITEM](previousState = [], payload) {
     const product = previousState.find((prevProduct) => prevProduct.id === payload?.id);
