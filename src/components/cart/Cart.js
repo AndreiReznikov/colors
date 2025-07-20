@@ -16,6 +16,7 @@ class Cart {
     this.closeButtonElement = document.querySelector(`.${BLOCK_CLASS}__close-button`);
     this.cartElement = document.querySelector(`.${BLOCK_CLASS}`);
     this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__wrapper`);
+    this.cartItemsCountElement = document.querySelector(`.${BLOCK_CLASS}__items-count`);
     this.cartItemsListElement = document.querySelector(`.${BLOCK_CLASS}__items-list`);
     this.cartSumElement = document.querySelector(`.${BLOCK_CLASS}__sum`);
     this.cartOrderButtonElement = document.querySelector(`.${BLOCK_CLASS}__order-button`);
@@ -90,15 +91,22 @@ class Cart {
 
     this.cartItemsListElement.innerHTML = itemsText;
     this._calculateTotalSum();
+    this._calculateTotalCount();
     this._setCartItemEvents();
     this._setOrderButtonProp();
     this.cartSumElement.innerHTML = this.totalSum;
+    this.cartItemsCountElement.innerHTML = this.totalCount;
   }
 
   _calculateTotalSum() {
     this.totalSum = store.getState().cart.reduce(
       (sum, item) => sum += Number(item.totalPrice), 0);
     this.localeTotalSum = this.totalSum.toLocaleString();
+  }
+
+  _calculateTotalCount() {
+    this.totalCount = store.getState().cart.reduce(
+      (count, item) => count += Number(item.count), 0);
   }
 
   _setOrderButtonProp() {
@@ -129,9 +137,11 @@ class Cart {
             counterElement.innerHTML = currentCount + 1;
             store.dispatch(incrementCartItem({ id }));
             this._calculateTotalSum();
+            this._calculateTotalCount();
 
             priceElement.innerHTML = cartItem.totalPrice;
             this.cartSumElement.innerHTML = this.localeTotalSum;
+            this.cartItemsCountElement.innerHTML = this.totalCount;
           }
 
           if (event.target.dataset.element === 'decrement') {
@@ -139,9 +149,11 @@ class Cart {
             counterElement.innerHTML = currentCount - 1;
             store.dispatch(decrementCartItem({ id }));
             this._calculateTotalSum();
+            this._calculateTotalCount();
 
             priceElement.innerHTML = cartItem.totalPrice;
             this.cartSumElement.innerHTML = this.localeTotalSum;
+            this.cartItemsCountElement.innerHTML = this.totalCount;
           }
 
           if (event.target.dataset.element === 'delete') {
@@ -152,8 +164,10 @@ class Cart {
               cartItemElement.remove();
               store.dispatch(removeFromCart({ id }));
               this._calculateTotalSum();
+              this._calculateTotalCount();
               this._setOrderButtonProp();
               this.cartSumElement.innerHTML = this.localeTotalSum;
+              this.cartItemsCountElement.innerHTML = this.totalCount;
             }, 3000);
 
           }
@@ -175,6 +189,7 @@ class Cart {
     this.totalSum = 0;
     this.localeTotalSum = 0;
     this.cartSumElement.innerHTML = 0;
+    this.cartItemsCountElement.innerHTML = 0;
     this.cartItemsListElement.innerHTML = 'Корзина пуста';
     this._setOrderButtonProp();
   }

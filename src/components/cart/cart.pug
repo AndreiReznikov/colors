@@ -4,7 +4,7 @@ mixin cart(options = {})
   -
     const { store } = require('~store');
     const cart = store.getState().cart;
-    const cartLength = cart.length ?? 0;
+    const cartCount = cart.reduce((total, item) => total += item.count, 0);
 
   .cart
     .cart__wrapper
@@ -13,7 +13,7 @@ mixin cart(options = {})
         .cart__close-button-wrapper
           button.cart__close-button(aria-label="Закрыть корзину")
       .cart__items-control-wrapper
-        span.cart__items-count=cartLength
+        span.cart__items-count=cartCount
         .cart__clear-button-wrapper
           button.cart__clear-button=options.clearText
       .cart__items-wrapper

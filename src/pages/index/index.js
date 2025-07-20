@@ -40,6 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     cartCounter.innerText = store.getState().cart.length;
   });
 
+  store.subscribe("CLEAR_CART", () => {
+    const cartCounter = document.querySelector(
+      '[data-element="cartCounter"]',
+    );
+
+    cartCounter.innerText = store.getState().cart.length;
+  });
+
   document.querySelectorAll('[data-element="cartIncrement"]').forEach((element) => {
     element.addEventListener('click', () => {
       const product = store.getState().products.find((product) =>
