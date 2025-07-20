@@ -7,8 +7,9 @@ const BLOCK_CLASS = 'cart';
 class Cart {
   init(options = {}) {
     this._findElements();
+    this._addSubscribes()
     this._addEventListeners(options);
-    this._renderCartItem();
+    this._renderCartItems();
   }
 
   _findElements() {
@@ -16,6 +17,7 @@ class Cart {
     this.cartElement = document.querySelector(`.${BLOCK_CLASS}`);
     this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__wrapper`);
     this.cartItemsListElement = document.querySelector(`.${BLOCK_CLASS}__items-list`);
+    this.cartSumElement = document.querySelector(`.${BLOCK_CLASS}__sum`);
     this.scrimElement = document.querySelector(`.${BLOCK_CLASS}__scrim`);
     this.cartParentElement = this.cartElement.parentElement;
   }
@@ -39,7 +41,7 @@ class Cart {
     }
   }
 
-  _renderCartItem() {
+  _renderCartItems() {
     let itemsText = '';
 
     const cart = store.getState().cart;
@@ -85,7 +87,14 @@ class Cart {
     });
 
     this.cartItemsListElement.innerHTML = itemsText;
+    this._calculateTotalSum();
     this._setCartItemEvents();
+    this.cartSumElement.innerHTML = this.totalSum;
+  }
+
+  _calculateTotalSum() {
+    this.totalSum = store.getState().cart.reduce(
+      (sum, item) => sum += Number(item.totalPrice), 0).toLocaleString();
   }
 
   _setCartItemEvents() {
@@ -107,16 +116,20 @@ class Cart {
           if (event.target.dataset.element === 'increment') {
             counterElement.innerHTML = currentCount + 1;
             store.dispatch(incrementCartItem({ id }));
+            this._calculateTotalSum();
 
             priceElement.innerHTML = cartItem.totalPrice;
+            this.cartSumElement.innerHTML = this.totalSum;
           }
 
           if (event.target.dataset.element === 'decrement') {
             if (currentCount <= 1) return;
             counterElement.innerHTML = currentCount - 1;
             store.dispatch(decrementCartItem({ id }));
+            this._calculateTotalSum();
 
             priceElement.innerHTML = cartItem.totalPrice;
+            this.cartSumElement.innerHTML = this.totalSum;
           }
 
           if (event.target.dataset.element === 'delete') {
@@ -126,7 +139,10 @@ class Cart {
             timerId = setTimeout(() => {
               cartItemElement.remove();
               store.dispatch(removeFromCart({ id }));
+              this._calculateTotalSum();
+              this.cartSumElement.innerHTML = this.totalSum;
             }, 3000);
+
           }
 
           if (event.target.dataset.element === 'repeat') {
@@ -139,6 +155,10 @@ class Cart {
       });
   }
 
+  _addSubscribes() {
+    store.subscribe('ADD_TO_CART', this._renderCartItems.bind(this));
+  }
+
   _addEventListeners(options) {
     this.closeButtonElement.addEventListener('click',
       () => this._handleCloseCart(options.toggleScroll),
@@ -146,8 +166,6 @@ class Cart {
     this.scrimElement.addEventListener('click',
       (event) => this._clickOutsideCart(event, options.toggleScroll),
     );
-
-    store.subscribe('ADD_TO_CART', this._renderCartItem.bind(this))
   }
 
 }

@@ -4,6 +4,9 @@ include ~components/logo/logo
 mixin header(options = {})
   -
     const { formatPhone } = require('~utils/utils.js');
+    const { store } = require('~store');
+    const cart = store.getState().cart;
+    const cartLength = cart.length ?? 0;
     const phoneNumber = options?.number ?? '';
     const cleanedNumber = formatPhone(phoneNumber);
 
@@ -44,6 +47,6 @@ mixin header(options = {})
                 button.header__cart-button(
                   aria-label="Открыть корзину"
                   data-element="cartCounter"
-                ) 0
+                )=cartLength
     .header__cart-wrapper
-      +cart()
+      +cart({ currency: "₽", orderText: "Оформить заказ" })

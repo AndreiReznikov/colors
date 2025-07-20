@@ -8,7 +8,7 @@ mixin cart(options = {})
   .cart
     .cart__wrapper
       .cart__title-wrapper
-        h2.cart__title Корзина
+        h2.cart__title=options.title
         .cart__close-button-wrapper
           button.cart__close-button(aria-label="Закрыть корзину")
       .cart__items-wrapper
@@ -19,9 +19,9 @@ mixin cart(options = {})
               +cart-item({ id, title, totalPrice, currency, img, count })
       .cart__order-wrapper
         .cart__sum-wrapper
-          span.cart__sum 14 400
-          span.cart__currency ₽
+          span.cart__sum=options.totalSum
+          span.cart__currency=options.currency
         .cart__order-button-wrapper
-          button.cart__order-button Оформить заказ
+          button.cart__order-button=options.orderText
 
     .cart__scrim
