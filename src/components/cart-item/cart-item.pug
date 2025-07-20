@@ -1,16 +1,17 @@
 mixin cart-item(options = {})
-  .cart-item
+  .cart-item(data-id=options.id data-element="cartItem")
     .cart-item__wrapper
       .cart-item__image-wrapper
         img.cart-item__image(src=options.img alt=options.altText)
       .cart-item__info-wrapper
         h3.cart-item__title=options.title
         .cart-item__price-wrapper
-          span.cart-item__price=options.price
+          span.cart-item__price=options.totalPrice
           span.cart-item__currency=' ' + options.currency
       .cart-item__counter-wrapper
-        button.cart-item__decrement -
-        span.cart-item__counter 0
-        button.cart-item__increment +
+        button.cart-item__decrement(data-element="decrement") -
+        span.cart-item__counter(data-element="counter") 0
+        button.cart-item__increment(data-element="increment") +
       .cart-item__actions-wrapper
-        .cart-item__close-button
+        button.cart-item__delete-button(aria-label=`Удалить продукт ${options.title} из корзины`)
+        button.cart-item__repeat-button(aria-label=`Вернуть продукт ${options.title} в корзину`)

@@ -1,5 +1,5 @@
 mixin card(options = {})
-  .card
+  .card(data-id=options.id)
     .card__image-wrapper
       img.card__image(src=options.img alt=options.altText)
     .card__title-wrapper
@@ -12,6 +12,9 @@ mixin card(options = {})
         if options.added
           button.card__decrement-button -
           span.card__count=options.addedCount
-          button.card__increment-button +
+          button.card__increment-button(data-element="cartIncrement") +
         else
-          button.card__cart-button +
+          button.card__cart-button(
+            data-element="cartIncrement"
+            data-product-id=options.id
+          ) +

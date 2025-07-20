@@ -61,6 +61,12 @@
     border-color: var(--bg-dark-color);
   }
 
+  &__items-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
   &__order-wrapper {
     display: flex;
     justify-content: space-between;

@@ -43,6 +43,7 @@ mixin header(options = {})
               li.header__icons-menu-item
                 button.header__cart-button(
                   aria-label="Открыть корзину"
+                  data-element="cartCounter"
                 ) 0
     .header__cart-wrapper
       +cart()
