@@ -49,4 +49,10 @@ mixin header(options = {})
                   data-element="cartCounter"
                 )=cartLength
     .header__cart-wrapper
-      +cart({ currency: "₽", orderText: "Оформить заказ" })
+      +cart({
+        title: "Корзина",
+        currency: "₽",
+        clearText: "Очистить список",
+        sumText: "Итого",
+        orderText: "Оформить заказ",
+      })

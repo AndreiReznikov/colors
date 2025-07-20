@@ -18,6 +18,7 @@ class Cart {
     this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__wrapper`);
     this.cartItemsListElement = document.querySelector(`.${BLOCK_CLASS}__items-list`);
     this.cartSumElement = document.querySelector(`.${BLOCK_CLASS}__sum`);
+    this.cartOrderButtonElement = document.querySelector(`.${BLOCK_CLASS}__order-button`);
     this.scrimElement = document.querySelector(`.${BLOCK_CLASS}__scrim`);
     this.cartParentElement = this.cartElement.parentElement;
   }
@@ -89,12 +90,22 @@ class Cart {
     this.cartItemsListElement.innerHTML = itemsText;
     this._calculateTotalSum();
     this._setCartItemEvents();
+    this._setOrderButtonProp();
     this.cartSumElement.innerHTML = this.totalSum;
   }
 
   _calculateTotalSum() {
     this.totalSum = store.getState().cart.reduce(
-      (sum, item) => sum += Number(item.totalPrice), 0).toLocaleString();
+      (sum, item) => sum += Number(item.totalPrice), 0);
+    this.localeTotalSum = this.totalSum.toLocaleString();
+  }
+
+  _setOrderButtonProp() {
+    if (!!this.totalSum) {
+      return this.cartOrderButtonElement.disabled = false;
+    }
+
+    this.cartOrderButtonElement.disabled = true;
   }
 
   _setCartItemEvents() {
@@ -119,7 +130,7 @@ class Cart {
             this._calculateTotalSum();
 
             priceElement.innerHTML = cartItem.totalPrice;
-            this.cartSumElement.innerHTML = this.totalSum;
+            this.cartSumElement.innerHTML = this.localeTotalSum;
           }
 
           if (event.target.dataset.element === 'decrement') {
@@ -129,7 +140,7 @@ class Cart {
             this._calculateTotalSum();
 
             priceElement.innerHTML = cartItem.totalPrice;
-            this.cartSumElement.innerHTML = this.totalSum;
+            this.cartSumElement.innerHTML = this.localeTotalSum;
           }
 
           if (event.target.dataset.element === 'delete') {
@@ -140,7 +151,8 @@ class Cart {
               cartItemElement.remove();
               store.dispatch(removeFromCart({ id }));
               this._calculateTotalSum();
-              this.cartSumElement.innerHTML = this.totalSum;
+              this._setOrderButtonProp();
+              this.cartSumElement.innerHTML = this.localeTotalSum;
             }, 3000);
 
           }
@@ -151,12 +163,15 @@ class Cart {
 
             clearTimeout(timerId);
           }
+
+          this._setOrderButtonProp();
         });
       });
   }
 
   _addSubscribes() {
     store.subscribe('ADD_TO_CART', this._renderCartItems.bind(this));
+    store.subscribe('ADD_TO_CART', this._setOrderButtonProp.bind(this));
   }
 
   _addEventListeners(options) {

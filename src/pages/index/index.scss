@@ -12,7 +12,6 @@
 :root {
   --theme-color: #7bb899;
   --theme-color-dark: #7ca993;
-  --font-color: #1f2020;
   --bg-color: #fff;
   --bg-dark-color: #000;
   --bg-gr-color: #f2f2f2;
@@ -29,7 +28,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: var(--base-size);
-  color: var(--font-color);
+  color: var(--text-color);
   background-color: var(--bg-color);
 
   & * {

@@ -4,6 +4,7 @@ mixin cart(options = {})
   -
     const { store } = require('~store');
     const cart = store.getState().cart;
+    const cartLength = cart.length ?? 0;
 
   .cart
     .cart__wrapper
@@ -11,6 +12,10 @@ mixin cart(options = {})
         h2.cart__title=options.title
         .cart__close-button-wrapper
           button.cart__close-button(aria-label="Закрыть корзину")
+      .cart__items-control-wrapper
+        span.cart__items-count=cartLength
+        .cart__clear-button-wrapper
+          button.cart__clear-button=options.clearText
       .cart__items-wrapper
         ul.cart__items-list
           each item in cart
@@ -18,10 +23,13 @@ mixin cart(options = {})
             li.cart__item
               +cart-item({ id, title, totalPrice, currency, img, count })
       .cart__order-wrapper
-        .cart__sum-wrapper
-          span.cart__sum=options.totalSum
-          span.cart__currency=options.currency
+        .cart__total-sum-wrapper
+          .cart__sum-text-wrapper
+            span.cart__sum-text=options.sumText
+          .cart__sum-wrapper
+            span.cart__sum=options.totalSum
+            span.cart__currency=options.currency
         .cart__order-button-wrapper
-          button.cart__order-button=options.orderText
+          button.cart__order-button(disabled="true")=options.orderText
 
     .cart__scrim
