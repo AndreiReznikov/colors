@@ -1,7 +1,9 @@
 import { VISIBLE_MODIFIER } from "~constants/constants";
+import { pluralize } from "~utils/utils";
 import { clearCart, decrementCartItem, incrementCartItem, removeFromCart } from "~reducers/cart";
 import { store } from "~store";
 
+const ITEMS_WORDS = ['товар', 'товара', 'товаров'];
 const EMPTY_CART_TEXT = 'Корзина пуста';
 const BLOCK_CLASS = 'cart';
 
@@ -100,7 +102,7 @@ class Cart {
     this._setEmptyText();
     this._setCartItemsControlProps();
     this.cartSumElement.innerHTML = this.localeTotalSum;
-    this.cartItemsCountElement.innerHTML = this.totalCount;
+    this.cartItemsCountElement.innerHTML = this.countText;
   }
 
   _calculateTotalSum() {
@@ -112,6 +114,8 @@ class Cart {
   _calculateTotalCount() {
     this.totalCount = store.getState().cart.reduce(
       (count, item) => count += Number(item.count), 0);
+
+    this._addTotalCountText();
   }
 
   _setOrderButtonProp() {
@@ -144,6 +148,10 @@ class Cart {
     this.cartItemsControlWrapperElement.style.display = 'none';
   }
 
+  _addTotalCountText() {
+    this.countText = `${this.totalCount} ${pluralize(this.totalCount, ITEMS_WORDS)}`;
+  }
+
   _setCartItemEvents() {
     this.cartItemsListElement
       .querySelectorAll('[data-element="cartItem"]').forEach((cartItemElement) => {
@@ -168,7 +176,7 @@ class Cart {
 
             priceElement.innerHTML = cartItem.totalPrice;
             this.cartSumElement.innerHTML = this.localeTotalSum;
-            this.cartItemsCountElement.innerHTML = this.totalCount;
+            this.cartItemsCountElement.innerHTML = this.countText;
           }
 
           if (event.target.dataset.element === 'decrement') {
@@ -180,7 +188,7 @@ class Cart {
 
             priceElement.innerHTML = cartItem.totalPrice;
             this.cartSumElement.innerHTML = this.localeTotalSum;
-            this.cartItemsCountElement.innerHTML = this.totalCount;
+            this.cartItemsCountElement.innerHTML = this.countText;
           }
 
           if (event.target.dataset.element === 'delete') {
@@ -196,7 +204,7 @@ class Cart {
               this._setEmptyText();
               this._setCartItemsControlProps();
               this.cartSumElement.innerHTML = this.localeTotalSum;
-              this.cartItemsCountElement.innerHTML = this.totalCount;
+              this.cartItemsCountElement.innerHTML = this.countText;
             }, 3000);
 
           }
@@ -220,7 +228,7 @@ class Cart {
     this.totalSum = 0;
     this.localeTotalSum = 0;
     this.cartSumElement.innerHTML = 0;
-    this.cartItemsCountElement.innerHTML = 0;
+    this.cartItemsCountElement.innerHTML = '';
     this.cartItemsListElement.innerHTML = '';
     this._setOrderButtonProp();
     this._setEmptyText();
