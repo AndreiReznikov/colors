@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PugPlugin = require('pug-plugin');
 
@@ -85,6 +86,7 @@ module.exports = (env, argv) => {
           },
         ],
       }),
+      new Dotenv(),
     ],
     devServer: {
       static: {

@@ -25,7 +25,7 @@ const colors = new Colors();
 
 colors.initializePlugins();
 
-axios('https://687e0e42c07d1a878c31110c.mockapi.io/api/products')
+axios(`https://${process.env.MOCK_API_SECRET}.mockapi.io/api/products`)
   .then((response) => {
     store.dispatch(setProducts(response.data));
   });
