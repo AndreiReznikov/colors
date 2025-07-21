@@ -1,5 +1,6 @@
 import axios from "axios";
 import { store } from "~store";
+import { productApi } from "~api";
 import { setProducts } from "~reducers/products";
 
 const BLOCK_CLASS = 'card-list';
@@ -85,33 +86,30 @@ class CardList {
 
   _setSubscribes() {
     try {
-      store.subscribe("SET_SORT_TYPE", (state = {}) => {
-        axios('https://687e0e42c07d1a878c31110c.mockapi.io/api/products', {
-          params: state,
-        })
-          .then((response) => {
-            store.dispatch(setProducts(response.data));
-          });
+      store.subscribe("SET_SORT_TYPE", async (state = {}) => {
+        const params = { ...state };
+        const filters = store.getState().filters;
+        filters?.forEach((filter) => params[filter] = true);
+
+        const products = await productApi.getProducts(params);
+        if (!products) return;
+        store.dispatch(setProducts(products));
       });
     } catch (error) {
       console.error('Ошибка:', error);
-
       store.dispatch(setProducts([]));
     }
     store.subscribe("SET_FILTERS", async (state = []) => {
       try {
-        const params = {};
+        const sort = store.getState().sort;
+        const params = { ...sort };
         state.forEach((filter) => params[filter] = true);
 
-        await axios.get('https://687e0e42c07d1a878c31110c.mockapi.io/api/products', {
-          params
-        })
-          .then((response) => {
-            store.dispatch(setProducts(response.data));
-          });
+        const products = await productApi.getProducts(params);
+        if (!products) return;
+        store.dispatch(setProducts(products));
       } catch (error) {
         console.error('Ошибка:', error);
-
         store.dispatch(setProducts([]));
       }
     });
