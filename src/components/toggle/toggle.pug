@@ -1,9 +1,10 @@
 mixin toggle(options = {})
-  label.toggle
+  label.toggle(data-element="toggle")
     input.toggle__input(
       type="checkbox"
       value=options.value
       checked=options.checked
+      data-element="toggleInput"
     )
     span.toggle__custom-input
     span.toggle__text=options.text

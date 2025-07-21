@@ -3,6 +3,7 @@ import reducers from "~reducers";
 import Store from "./store";
 
 const initStore = {
+  filters: [],
   cart: [
     {
       id: 2,

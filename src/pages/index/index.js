@@ -2,7 +2,7 @@ import GlideLib from '~libs/glideLib';
 import '~components/cart';
 import '~components/header';
 import '~components/selector';
-import '~components/toggle';
+import '~components/toggle-list';
 import '~templates/fonts.scss';
 import { store } from '~store';
 
