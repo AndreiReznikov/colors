@@ -9,6 +9,7 @@ export const productApi = {
       return response.data;
     } catch (error) {
       console.error('Ошибка при получении продуктов:', error);
+      throw error;
     }
   }
 };
