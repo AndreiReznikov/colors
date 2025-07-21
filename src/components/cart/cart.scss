@@ -87,6 +87,7 @@
 
   &__items-wrapper {
     flex: 1;
+    overflow-y: auto;
   }
 
   &__items-list {

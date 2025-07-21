@@ -161,7 +161,7 @@ class Cart {
         const priceElement = cartItemElement.querySelector('[data-element="price"]');
         const id = Number(cartItemElement.dataset.id);
         const cartItem = store.getState().cart.find(
-          (item) => item.id === id,
+          (item) => Number(item.id) === id,
         );
         let timerId;
 

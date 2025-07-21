@@ -68,7 +68,7 @@ class CardList {
           if (event.target.dataset.element !== 'cartIncrement') return;
 
           const product = store.getState().products.find((product) =>
-            product.id === Number(cardElement.dataset.id));
+            Number(product.id) === Number(cardElement.dataset.id));
 
           store.dispatch({
             type: "ADD_TO_CART",
@@ -112,8 +112,8 @@ class CardList {
       }
     });
     store.subscribe("SET_PRODUCTS", (state = []) => {
-      console.log('set');
       this._renderList(state);
+      this._setAddToCartEvent();
     });
   }
 }

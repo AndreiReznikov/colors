@@ -41,7 +41,8 @@ export const decrementCartItem = payload => {
 
 export const cart = {
   [ADD_TO_CART](previousState = [], payload) {
-    const product = previousState.find((prevProduct) => prevProduct.id === payload?.id);
+    const product = previousState.find((prevProduct) =>
+      Number(prevProduct.id) === Number(payload?.id));
 
     if (!!product) {
       product.count += 1;
@@ -53,13 +54,15 @@ export const cart = {
     return [...previousState, { ...payload, totalPrice: payload?.price, count: 1 }];
   },
   [REMOVE_FROM_CART](previousState = [], payload) {
-    return previousState.filter(product => product.id !== payload?.id);
+    return previousState.filter((prevProduct) =>
+      Number(prevProduct.id) !== Number(payload?.id));
   },
   [CLEAR_CART](previousState = [], payload) {
     return [];
   },
   [INCREMENT_CART_ITEM](previousState = [], payload) {
-    const product = previousState.find((prevProduct) => prevProduct.id === payload?.id);
+    const product = previousState.find((prevProduct) =>
+      Number(prevProduct.id) === Number(payload?.id));
 
     if (!!product) {
       product.count += 1;
@@ -69,7 +72,8 @@ export const cart = {
     }
   },
   [DECREMENT_CART_ITEM](previousState = [], payload) {
-    const product = previousState.find((prevProduct) => prevProduct.id === payload?.id);
+    const product = previousState.find((prevProduct) =>
+      Number(prevProduct.id) === Number(payload?.id));
 
     if (!!product && product.count > 1) {
       product.count -= 1;
