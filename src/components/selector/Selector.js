@@ -1,5 +1,3 @@
-import { store } from "~store";
-import { setSortType } from "~reducers/sort";
 import { VISIBLE_MODIFIER } from "~constants/constants";
 
 const BLOCK_CLASS = 'selector';
@@ -20,13 +18,6 @@ class Selector {
     this.scrimElement = this.rootElement.querySelector(`.${BLOCK_CLASS}__scrim`);
   }
 
-  _setSortType({ value, order }) {
-    store.dispatch(setSortType({
-      sortBy: value,
-      order,
-    }));
-  }
-
   _handleOpenSelector() {
     this.selectorWrapperElement.classList.add(`${BLOCK_CLASS}__wrapper${VISIBLE_MODIFIER}`);
     this.options.onOpen?.();
@@ -37,12 +28,10 @@ class Selector {
   }
 
   _handleItemClick(event) {
-    this.options.onSelect?.();
-
     const target = event.currentTarget;
     const { order, value } = target.dataset;
 
-    this._setSortType({ value, order });
+    this.options.onSelect?.({ order, value });
     this._setSelectorText(target.textContent);
     this._handleCloseSelector();
   }
