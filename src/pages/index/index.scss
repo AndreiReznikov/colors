@@ -1,7 +1,8 @@
 @use "~constants/constants" as constants;
 @use "~templates/mixins" as mixins;
+@import "~templates/fonts";
 @import "normalize.css";
-@import "~components/card/card";
+@import "~components/card-list/card-list";
 @import "~components/cart/cart";
 @import "~components/footer/footer";
 @import "~components/glide/glide";
@@ -87,15 +88,5 @@
   &__products-count {
     font-size: .75rem;
     font-weight: 500;
-  }
-
-  &__products-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    width: 100%;
-    margin: 2.75rem 0;
-    padding: 0;
-    list-style-type: none;
   }
 }

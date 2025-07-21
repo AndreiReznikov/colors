@@ -1,0 +1,13 @@
+include ~components/card/card
+
+mixin card-list(options = {})
+  -
+    const { store } = require('~store');
+    const products = store.getState().products ?? options.products;
+
+  .card-list
+    ul.card-list__list
+      each product in products
+        - const { id, title, price, currency, img } = product;
+        li.card-list__item
+          +card({ id, title, price, currency, img })

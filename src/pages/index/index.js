@@ -2,9 +2,8 @@ import GlideLib from '~libs/glideLib';
 import '~components/cart';
 import '~components/header';
 import '~components/selector';
+import '~components/card-list';
 import '~components/toggle-list';
-import '~templates/fonts.scss';
-import { store } from '~store';
 
 import './index.scss';
 
@@ -23,40 +22,30 @@ const colors = new Colors();
 
 colors.initializePlugins();
 
-document.addEventListener('DOMContentLoaded', () => {
-  store.subscribe("ADD_TO_CART", () => {
-    const cartCounter = document.querySelector(
-      '[data-element="cartCounter"]',
-    );
+// store.subscribe("SET_SORT_TYPE", (state) => {
+//   console.log(state);
+//   axios('https://687e0e42c07d1a878c31110c.mockapi.io/api/products', {
+//     params: state,
+//   })
+//     .then((response) => {
+//       console.log(response.data);
+//     });
+// });
 
-    cartCounter.innerText = store.getState().cart.length;
-  });
+// store.subscribe("SET_FILTERS", async (state = []) => {
+//   console.log(state);
+//   try {
+//     const params = {};
 
-  store.subscribe("REMOVE_FROM_CART", () => {
-    const cartCounter = document.querySelector(
-      '[data-element="cartCounter"]',
-    );
+//     state.forEach((filter) => params[filter] = true);
 
-    cartCounter.innerText = store.getState().cart.length;
-  });
+//     const url = 'https://687e0e42c07d1a878c31110c.mockapi.io/api/products';
+//     const response = await axios.get(url, { params });
 
-  store.subscribe("CLEAR_CART", () => {
-    const cartCounter = document.querySelector(
-      '[data-element="cartCounter"]',
-    );
-
-    cartCounter.innerText = store.getState().cart.length;
-  });
-
-  document.querySelectorAll('[data-element="cartIncrement"]').forEach((element) => {
-    element.addEventListener('click', () => {
-      const product = store.getState().products.find((product) =>
-        product.id === Number(element.dataset.productId));
-
-      store.dispatch({
-        type: "ADD_TO_CART",
-        payload: product,
-      })
-    });
-  });
-});
+//     console.log(response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Ошибка:', error);
+//     return [];
+//   }
+// });

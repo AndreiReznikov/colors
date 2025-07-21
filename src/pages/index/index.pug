@@ -1,7 +1,7 @@
 extends ~pages-base/page-base
 include ~components/glide/glide
-include ~components/card/card
 include ~components/selector/selector
+include ~components/card-list/card-list
 include ~components/toggle-list/toggle-list
 
 block vars
@@ -80,8 +80,4 @@ block content
               positionX: 'left',
             })
         .index__products-wrapper
-          ul.index__products-list
-            each product in products
-              - const { id, title, price, currency, img } = product;
-              li.index__product-item
-                +card({ id, title, price, currency, img })
+          +card-list()

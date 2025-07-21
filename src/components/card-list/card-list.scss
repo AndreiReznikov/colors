@@ -1,0 +1,13 @@
+@import "~components/card/card";
+
+.card-list {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    margin: 2.75rem 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}

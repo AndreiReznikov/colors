@@ -1,7 +1,13 @@
 mixin card(options = {})
-  .card(data-id=options.id)
+  .card(data-id=options.id data-element="card")
     .card__image-wrapper
-      img.card__image(src=options.img alt=options.altText)
+      img.card__image(
+        src=options.img
+        alt=options.altText
+        loading="lazy"
+        width="278",
+        height="278"
+      )
     .card__title-wrapper
       h3.card__title=options.title
     .card__bottom-wrapper
@@ -9,12 +15,4 @@ mixin card(options = {})
         span.card__price=options.price
         span.card__currency=' ' + options.currency
       .card__actions-wrapper
-        if options.added
-          button.card__decrement-button -
-          span.card__count=options.addedCount
-          button.card__increment-button(data-element="cartIncrement") +
-        else
-          button.card__cart-button(
-            data-element="cartIncrement"
-            data-product-id=options.id
-          ) +
+        button.card__cart-button(data-element="cartIncrement") +
