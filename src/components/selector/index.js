@@ -10,13 +10,13 @@ const initializeSelector = () => {
   selectorElements.forEach((element) => {
     const options = {
       onOpen: () => toggleScroll(),
+      onClose: () => toggleScroll(),
       onSelect: ({ order, value }) => {
         store.dispatch(setSortType({
           sortBy: value,
           order,
         }))
       },
-      onClose: () => toggleScroll(),
     };
 
     new Selector(element, options);

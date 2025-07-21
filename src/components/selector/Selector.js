@@ -57,17 +57,17 @@ class Selector {
 
   _addEventListeners() {
     this.selectorButtonElement.addEventListener('click',
-      () => this._handleOpenSelector()
+      () => this._handleOpenSelector(),
     );
 
     this.selectorItemElementCollection.forEach((itemElement) => {
       itemElement.addEventListener('click',
-        (event) => this._handleItemClick(event)
+        (event) => this._handleItemClick(event),
       );
     });
 
     this.scrimElement.addEventListener('click',
-      (event) => this._clickOutsideSelector(event)
+      (event) => this._clickOutsideSelector(event),
     );
   }
 }
