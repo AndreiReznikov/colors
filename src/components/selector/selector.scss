@@ -1,10 +1,14 @@
 .selector {
   position: relative;
-  padding-right: .9375rem;
+  padding-right: 0.9375rem;
+
+  &:hover {
+    background-color: var(--rgba-dark-10);
+  }
 
   &__button {
     position: relative;
-    font-size: .75rem;
+    font-size: 0.75rem;
     border: none;
     background: transparent;
     text-transform: uppercase;
@@ -17,9 +21,9 @@
       top: 50%;
       width: 0;
       height: 0;
-      border-left: .25rem solid transparent;
-      border-right: .25rem solid transparent;
-      border-top: .375rem solid var(--text-color);
+      border-left: 0.25rem solid transparent;
+      border-right: 0.25rem solid transparent;
+      border-top: 0.375rem solid var(--text-color);
       transform: translateY(-50%);
       pointer-events: none;
     }

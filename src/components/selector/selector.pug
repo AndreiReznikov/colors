@@ -10,14 +10,20 @@ mixin selector(options = {})
 
 
     const { items, selected = 0 } = options;
-    const selectedItem = items[selected];
+    const selectedName = items[selected].name;
 
   .selector
     .selector__button-wrapper
-      button.selector__button=selectedItem
+      button.selector__button=selectedName
     .selector__wrapper
       ul(class=listClassName)
         each item, index in items
-          li.selector__item(data-id=index tabindex=0)=item
+          - const { name, value, order } = item;
+          li.selector__item(
+            data-id=index
+            data-value=value
+            data-order=order
+            tabindex=0
+          )=name
 
       .selector__scrim

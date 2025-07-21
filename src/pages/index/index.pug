@@ -56,12 +56,25 @@ block content
           span.index__products-count 412 товаров
           .index__selector-wrapper
             +selector({
-              selected: 1,
+              selected: 0,
               items: [
-                'Сначала дорогие',
-                'Сначала недорогие',
-                'Сначала популярные',
-                'Сначала новые',
+                {
+                  name: 'Сначала дорогие',
+                  value: 'price',
+                },
+                {
+                  name: 'Сначала недорогие',
+                  value: 'price',
+                  order: 'asc',
+                },
+                {
+                  name: 'Сначала популярные',
+                  value: 'popularity',
+                },
+                {
+                  name: 'Сначала новые',
+                  value: 'createdAt',
+                },
               ],
               positionY: 'bottom',
               positionX: 'left',
