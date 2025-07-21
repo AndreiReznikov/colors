@@ -8,13 +8,16 @@
   border-bottom: 0.0625rem solid var(--rgba-dark-10);
 
   &__image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 17.375rem;
     height: 17.375rem;
   }
 
   &__image {
-    width: 17.375rem;
-    height: 17.375rem;
+    width: 12.5rem;
+    height: 12.5rem;
     object-fit: cover;
   }
 
