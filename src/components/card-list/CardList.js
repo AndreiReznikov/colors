@@ -20,6 +20,10 @@ class CardList {
   _renderList(items) {
     let listHtml = '';
 
+    if (!items.length) {
+      return this.listElement.innerHTML = 'Товары не найдены';
+    }
+
     items.forEach((item = {}) => {
       listHtml += `
       <li class=".${BLOCK_CLASS}__item">
