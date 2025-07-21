@@ -12,70 +12,35 @@ block vars
     const description = 'Colors marketplace';
 
     const { store } = require('~store');
+    const {
+      SLIDER_ITEMS,
+      TOGGLE_ITEMS,
+      SELECTOR_ITEMS,
+      HEADER_OPTIONS,
+    } = require('./mock.js');
     const products = store.getState().products;
+    const sort = store.getState().sort;
+    const selectedIndex = SELECTOR_ITEMS.findIndex((item) =>
+      item.value === sort.sortBy && item.order === sort.order
+    );
+    const selected = selectedIndex !== -1 ? selectedIndex : 0;
 
 block content
   .index__container
     .index__glide-wrapper
-      +glide([
-        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-        { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-      ])
+      +glide(SLIDER_ITEMS)
     main.index__main
       section.index__filters-section
         .index__toggle-wrapper
-          +toggle-list([
-            {
-              text: "Новинки",
-              value: "new",
-            },
-            {
-              text: "Есть в наличии",
-              value: "available",
-            },
-            {
-              text: "Контрактные",
-              value: "contract",
-            },
-            {
-              text: "Эксклюзивные",
-              value: "exclusive",
-            },
-            {
-              text: "Распродажа",
-              value: "sale",
-            }
-          ])
+          +toggle-list(TOGGLE_ITEMS)
 
       section.index__products-section
         .index__sort-wrapper
-          span.index__products-count 412 товаров
+          span.index__products-count
           .index__selector-wrapper
             +selector({
-              selected: 0,
-              items: [
-                {
-                  name: 'Сначала дорогие',
-                  value: 'price',
-                },
-                {
-                  name: 'Сначала недорогие',
-                  value: 'price',
-                  order: 'asc',
-                },
-                {
-                  name: 'Сначала популярные',
-                  value: 'popularity',
-                },
-                {
-                  name: 'Сначала новые',
-                  value: 'createdAt',
-                },
-              ],
+              selected,
+              items: SELECTOR_ITEMS,
               positionY: 'bottom',
               positionX: 'left',
             })

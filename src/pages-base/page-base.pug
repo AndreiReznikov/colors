@@ -13,48 +13,6 @@ html(class=className lang="ru")
   })
   body(class=`${className}__body`)
     div(class=`${className}__wrapper`)
-      +header({
-        number: "+7 (495) 221-77-69",
-        phoneText: "Заказать звонок",
-        menuItems: [
-          {
-            title: "Продукты",
-            link: "/mock-address/change-me",
-          },
-          {
-            title: "Цвета",
-            link: "/mock-address/change-me",
-          },
-          {
-            title: "Вдохновение",
-            link: "/mock-address/change-me",
-          },
-          {
-            title: "Советы",
-            link: "/mock-address/change-me",
-          },
-          {
-            title: "Найти магазин",
-            link: "/mock-address/change-me",
-          },
-        ],
-        icons: [
-          {
-            link: "/mock-address/change-me",
-            src: "../assets/icons/search.svg",
-            ariaLabel: "Перейти на страницу поиска",
-          },
-          {
-            link: "/mock-address/change-me",
-            src: "../assets/icons/profile.svg",
-            ariaLabel: "Перейти на страницу профиля",
-          },
-          {
-            link: "/mock-address/change-me",
-            src: "../assets/icons/heart.svg",
-            ariaLabel: "Перейти на страницу избранного",
-          },
-        ],
-      })
+      +header(HEADER_OPTIONS)
       block content
       +footer()

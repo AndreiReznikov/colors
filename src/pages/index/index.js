@@ -1,6 +1,7 @@
 import { store } from '~store';
 import { productApi } from '~api';
 import { setProducts } from '~reducers/products';
+import { pluralize } from '~utils/utils';
 import GlideLib from '~libs/glideLib';
 import '~components/cart';
 import '~components/header';
@@ -10,9 +11,13 @@ import '~components/toggle-list';
 
 import './index.scss';
 
+const BASE_CLASS = 'index';
+
 class Colors {
   constructor() {
     this._loadProducts();
+    this._findElements();
+    this._addSubscribes();
   }
 
   initializePlugins() {
@@ -38,6 +43,19 @@ class Colors {
       console.error('Ошибка:', error);
       store.dispatch(setProducts([]));
     }
+  }
+
+  _addSubscribes() {
+    store.subscribe('SET_PRODUCTS', (products = []) => {
+      this.productCountElement.textContent = `${products.length} ${pluralize(
+        products.length,
+        ['товар', 'товара', 'товаров'],
+      )}`
+    });
+  }
+
+  _findElements() {
+    this.productCountElement = document.querySelector(`.${BASE_CLASS}__products-count`);
   }
 }
 
