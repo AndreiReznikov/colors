@@ -7,8 +7,10 @@ const initializeSelector = () => {
 
   selectorElements.forEach((element) => {
     const options = {
-      onAction: () => toggleScroll(),
-      onClick: () => toggleScroll(),
+      onOpen: () => toggleScroll(),
+      onSelect: () => {
+        console.log('select');
+      },
       onClose: () => toggleScroll(),
     };
 

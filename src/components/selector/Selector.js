@@ -5,17 +5,19 @@ import { VISIBLE_MODIFIER } from "~constants/constants";
 const BLOCK_CLASS = 'selector';
 
 class Selector {
-  init(options = {}) {
+  constructor(element, options = {}) {
+    this.rootElement = element;
+    this.options = options;
     this._findElements();
-    this._addEventListeners(options);
+    this._addEventListeners();
   }
 
   _findElements() {
-    this.selectorButtonElement = document.querySelector(`.${BLOCK_CLASS}__button`);
-    this.selectorWrapperElement = document.querySelector(`.${BLOCK_CLASS}__wrapper`);
-    this.selectorListElement = document.querySelector(`.${BLOCK_CLASS}__list`);
-    this.selectorItemElementCollection = document.querySelectorAll(`.${BLOCK_CLASS}__item`);
-    this.scrimElement = document.querySelector(`.${BLOCK_CLASS}__scrim`);
+    this.selectorButtonElement = this.rootElement.querySelector(`.${BLOCK_CLASS}__button`);
+    this.selectorWrapperElement = this.rootElement.querySelector(`.${BLOCK_CLASS}__wrapper`);
+    this.selectorListElement = this.rootElement.querySelector(`.${BLOCK_CLASS}__list`);
+    this.selectorItemElementCollection = this.rootElement.querySelectorAll(`.${BLOCK_CLASS}__item`);
+    this.scrimElement = this.rootElement.querySelector(`.${BLOCK_CLASS}__scrim`);
   }
 
   _setSortType({ value, order }) {
@@ -25,17 +27,17 @@ class Selector {
     }));
   }
 
-  _handleOpenSelector(onAction) {
+  _handleOpenSelector() {
     this.selectorWrapperElement.classList.add(`${BLOCK_CLASS}__wrapper${VISIBLE_MODIFIER}`);
-    onAction?.();
+    this.options.onOpen?.();
   }
 
   _setSelectorText(text) {
     this.selectorButtonElement.textContent = text;
   }
 
-  _handleItemClick(event, onClick) {
-    onClick?.();
+  _handleItemClick(event) {
+    this.options.onSelect?.();
 
     const target = event.currentTarget;
     const { order, value } = target.dataset;
@@ -45,7 +47,7 @@ class Selector {
     this._handleCloseSelector();
   }
 
-  _handleCloseSelector(onClose) {
+  _handleCloseSelector() {
     const classes = Array.from(this.selectorWrapperElement.classList);
     const visibleClass = classes.find(className => className.includes(VISIBLE_MODIFIER));
 
@@ -53,31 +55,32 @@ class Selector {
       this.selectorWrapperElement.classList.remove(visibleClass);
     }
 
-    onClose?.();
+    this.options.onClose?.();
   }
 
-  _clickOutsideSelector(event, onClose) {
+  _clickOutsideSelector(event) {
     const clickInside = this.selectorListElement.contains(event.target);
 
     if (!clickInside) {
-      this._handleCloseSelector(onClose);
+      this._handleCloseSelector();
     }
   }
 
-  _addEventListeners(options) {
+  _addEventListeners() {
     this.selectorButtonElement.addEventListener('click',
-      () => this._handleOpenSelector(options.toggleScroll),
+      () => this._handleOpenSelector()
     );
+
     this.selectorItemElementCollection.forEach((itemElement) => {
       itemElement.addEventListener('click',
-        (event) => this._handleItemClick(event, options.toggleScroll),
+        (event) => this._handleItemClick(event)
       );
     });
+
     this.scrimElement.addEventListener('click',
-      (event) => this._clickOutsideSelector(event, options.toggleScroll),
+      (event) => this._clickOutsideSelector(event)
     );
   }
-
 }
 
 export default Selector;

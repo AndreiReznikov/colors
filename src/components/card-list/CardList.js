@@ -5,8 +5,6 @@ const BLOCK_CLASS = 'card-list';
 class CardList {
   init() {
     this._findElements();
-    this._addSubscribes()
-    this._addEventListeners();
     this._setAddToCartEvent();
   }
 
@@ -30,18 +28,6 @@ class CardList {
 
         });
       });
-  }
-
-  _addSubscribes() {
-    // store.subscribe("ADD_TO_CART", () => {
-    //   this.cartButtonElement.innerText = store.getState().cart.length;
-    // });
-  }
-
-  _addEventListeners(options) {
-    // this.cartButtonElement.addEventListener('click',
-    //   () => this._handleOpenCart(options.toggleScroll),
-    // );
   }
 }
 

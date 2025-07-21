@@ -79,21 +79,5 @@ block content
               positionY: 'bottom',
               positionX: 'left',
             })
-            +selector({
-              selected: 0,
-              items: [
-                {
-                  name: 'Сначала очень хорошие',
-                  value: 'price',
-                },
-                {
-                  name: 'Сначала хорошие',
-                  value: 'price',
-                  order: 'asc',
-                },
-              ],
-              positionY: 'top',
-              positionX: 'left',
-            })
         .index__products-wrapper
           +card-list()
