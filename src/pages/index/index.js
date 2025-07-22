@@ -12,6 +12,7 @@ import '~components/toggle-list';
 import './index.scss';
 
 const BASE_CLASS = 'index';
+const ITEMS_WORDS = ['товар', 'товара', 'товаров'];
 
 class Colors {
   constructor() {
@@ -49,7 +50,7 @@ class Colors {
     store.subscribe('SET_PRODUCTS', (products = []) => {
       this.productCountElement.textContent = `${products.length} ${pluralize(
         products.length,
-        ['товар', 'товара', 'товаров'],
+        ITEMS_WORDS,
       )}`
     });
   }

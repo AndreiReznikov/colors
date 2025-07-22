@@ -6,6 +6,7 @@ import { store } from "~store";
 const ITEMS_WORDS = ['товар', 'товара', 'товаров'];
 const EMPTY_CART_TEXT = 'Корзина пуста';
 const BLOCK_CLASS = 'cart';
+const CHILD_BLOCK_CLASS = 'cart-item';
 
 class Cart {
   init(options = {}) {
@@ -56,41 +57,43 @@ class Cart {
 
     cart.forEach((item) => {
       itemsText += `
-        <div class="cart-item" data-element="cartItem" data-id="${item.id}">
-          <div class="cart-item__wrapper">
-            <div class="cart-item__image-wrapper">
-              <img class="cart-item__image" src="${item.img}" alt="${item.altText || ''}">
-            </div>
-            <div class="cart-item__info-wrapper">
-              <h3 class="cart-item__title">${item.title}</h3>
-              <div class="cart-item__price-wrapper">
-                <span class="cart-item__price" data-element="price">
-                  ${item.totalPrice}
-                </span>
-                <span class="cart-item__currency"> ${item.currency}</span>
+        <li class="${BLOCK_CLASS}__item">
+          <div class="${CHILD_BLOCK_CLASS}" data-element="cartItem" data-id="${item.id}">
+            <div class="${CHILD_BLOCK_CLASS}__wrapper">
+              <div class="${CHILD_BLOCK_CLASS}__image-wrapper">
+                <img class="${CHILD_BLOCK_CLASS}__image" src="${item.img}" alt="${item.altText || ''}">
+              </div>
+              <div class="${CHILD_BLOCK_CLASS}__info-wrapper">
+                <h3 class="${CHILD_BLOCK_CLASS}__title">${item.title}</h3>
+                <div class="${CHILD_BLOCK_CLASS}__price-wrapper">
+                  <span class="${CHILD_BLOCK_CLASS}__price" data-element="price">
+                    ${item.totalPrice}
+                  </span>
+                  <span class="${CHILD_BLOCK_CLASS}__currency"> ${item.currency}</span>
+                </div>
+              </div>
+              <div class="${CHILD_BLOCK_CLASS}__counter-wrapper" data-product-id=${item.id}>
+                <button class="${CHILD_BLOCK_CLASS}__decrement" data-element="decrement">-</button>
+                <span class="${CHILD_BLOCK_CLASS}__counter" data-element="counter">${item.count}</span>
+                <button class="${CHILD_BLOCK_CLASS}__increment" data-element="increment">
+                  +
+                </button>
+              </div>
+              <div class="${CHILD_BLOCK_CLASS}__actions-wrapper">
+                <button
+                  class="${CHILD_BLOCK_CLASS}__delete-button"
+                  data-element="delete"
+                  aria-label="Удалить продукт ${item.title} из корзины"
+                ></button>
+                <button
+                  class="${CHILD_BLOCK_CLASS}__repeat-button"
+                  data-element="repeat"
+                  aria-label="Вернуть продукт ${item.title} в корзину"
+                ></button>
               </div>
             </div>
-            <div class="cart-item__counter-wrapper" data-product-id=${item.id}>
-              <button class="cart-item__decrement" data-element="decrement">-</button>
-              <span class="cart-item__counter" data-element="counter">${item.count}</span>
-              <button class="cart-item__increment" data-element="increment">
-                +
-              </button>
-            </div>
-            <div class="cart-item__actions-wrapper">
-              <button
-                class="cart-item__delete-button"
-                data-element="delete"
-                aria-label="Удалить продукт ${item.title} из корзины"
-              ></button>
-              <button
-                class="cart-item__repeat-button"
-                data-element="repeat"
-                aria-label="Вернуть продукт ${item.title} в корзину"
-              ></button>
-            </div>
           </div>
-        </div>
+        </li>
       `;
     });
 
