@@ -6,6 +6,7 @@ import GlideLib from '~libs/glideLib';
 import '~components/cart';
 import '~components/header';
 import '~components/selector';
+import '~components/toggle-sheet';
 import '~components/card-list';
 import '~components/toggle-list';
 

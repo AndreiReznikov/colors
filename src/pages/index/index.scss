@@ -137,4 +137,12 @@
     font-size: 0.75rem;
     font-weight: 500;
   }
+
+  &__toggle-sheet-wrapper {
+    display: none;
+
+    &_visible {
+      display: block;
+    }
+  }
 }

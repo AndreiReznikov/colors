@@ -1,4 +1,8 @@
 .sheet {
+  &__visible {
+    color: red;
+  }
+
   &__wrapper {
     position: fixed;
     bottom: 0;
