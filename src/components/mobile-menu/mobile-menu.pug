@@ -1,0 +1,20 @@
+mixin mobile-menu(options = {})
+  .mobile-menu
+    nav.mobile-menu__nav
+      ul.mobile-menu__list
+        each item in options.menuItems
+          - const { title, link } = item;
+          li.mobile-menu__item
+            a.mobile-menu__link(
+              href=link
+            )
+              span.mobile-menu__text=title
+      ul.mobile-menu__icons-menu-list
+        each item in options.icons
+          - const { link, src, text } = item;
+          li.mobile-menu__icons-menu-item
+            a.mobile-menu__icons-menu-link(
+              href=link
+            )
+              img.mobile-menu__icon(src=src)
+              span.mobile-menu__icons-menu-text=text

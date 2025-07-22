@@ -82,17 +82,17 @@ export const HEADER_OPTIONS = {
     {
       link: "/mock-address/change-me",
       src: "../assets/icons/search.svg",
-      ariaLabel: "Перейти на страницу поиска",
+      text: "Поиск",
     },
     {
       link: "/mock-address/change-me",
       src: "../assets/icons/profile.svg",
-      ariaLabel: "Перейти на страницу профиля",
+      text: "Профиль",
     },
     {
       link: "/mock-address/change-me",
       src: "../assets/icons/heart.svg",
-      ariaLabel: "Перейти на страницу избранного",
+      text: "Избранное",
     },
   ],
 };

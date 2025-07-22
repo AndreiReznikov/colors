@@ -1,5 +1,6 @@
 include ~components/cart/cart
 include ~components/logo/logo
+include ~components/mobile-menu/mobile-menu
 
 mixin header(options = {})
   -
@@ -14,8 +15,8 @@ mixin header(options = {})
   header.header
     .header__wrapper
       .header__burger-wrapper
-        .header__burger
-          button.header__burger-button(aria-label="Меню")
+        button.header__burger-button
+          .header__burger-lines-wrapper(aria-label="Меню")
             span.header__burger-lines
       .header__left-block
         .header__logo-wrapper
@@ -43,11 +44,11 @@ mixin header(options = {})
           nav.header__icons-menu
             ul.header__icons-menu-list
               each item in options.icons
-                - const { link, src, ariaLabel } = item;
+                - const { link, src, text } = item;
                 li.header__icons-menu-item
                   a.header__icons-menu-link(
                     href=link
-                    aria-label=ariaLabel
+                    aria-label=text
                   )
                     img.header__icon(src=src)
               li.header__icons-menu-item
@@ -57,3 +58,8 @@ mixin header(options = {})
                 )=cartLength
     .header__cart-wrapper
       +cart(CART_OPTIONS)
+    .header__mobile-menu-wrapper
+      +mobile-menu({
+        menuItems: options.menuItems,
+        icons: options.icons,
+      })

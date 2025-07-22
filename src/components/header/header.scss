@@ -1,4 +1,6 @@
 @use "~constants/constants" as constants;
+@import "~components/cart/cart";
+@import "~components/mobile-menu/mobile-menu";
 
 .header {
   background-color: var(--bg-color);
@@ -10,6 +12,7 @@
   &__wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: constants.$max-width;
     min-height: 6.5rem;
     margin: 0 auto;
@@ -21,35 +24,39 @@
     }
   }
 
-  &__burger-wrapper {
+  &__burger-button {
     display: flex;
+    justify-content: center;
     align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
   }
 
-  &__burger-button {
+  &__burger-lines-wrapper {
     --line-width: 1.5rem;
     --line-height: 0.125rem;
     --line-gap: 0.25rem;
 
+    position: relative;
+    padding: 0;
     width: var(--line-width);
     height: calc(3 * var(--line-height) + 2 * var(--line-gap));
-    background: transparent;
-    border: none;
     cursor: pointer;
-    padding: 0;
-    position: relative;
   }
 
   &__burger-lines,
   &__burger-lines::before,
   &__burger-lines::after {
+    position: absolute;
     display: block;
     width: 100%;
     height: var(--line-height);
     background: var(--bg-dark-color);
-    position: absolute;
     border-radius: 2px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   &__burger-lines {
@@ -60,6 +67,7 @@
   &__burger-lines::before,
   &__burger-lines::after {
     content: "";
+    transform-origin: center;
   }
 
   &__burger-lines::before {
@@ -68,6 +76,18 @@
 
   &__burger-lines::after {
     top: calc(var(--line-gap) + var(--line-height));
+  }
+
+  &__burger-button_active &__burger-lines {
+    background: transparent;
+    &::before {
+      transform: translateY(calc(var(--line-gap) + var(--line-height)))
+        rotate(45deg);
+    }
+    &::after {
+      transform: translateY(calc(-1 * (var(--line-gap) + var(--line-height))))
+        rotate(-45deg);
+    }
   }
 
   &__left-block,
@@ -200,6 +220,14 @@
   }
 
   &__cart-wrapper {
+    display: none;
+
+    &_visible {
+      display: block;
+    }
+  }
+
+  &__mobile-menu-wrapper {
     display: none;
 
     &_visible {

@@ -1,5 +1,5 @@
 import { store } from "~store";
-import { VISIBLE_MODIFIER } from "~constants/constants";
+import { ACTIVE_MODIFIER, VISIBLE_MODIFIER } from "~constants/constants";
 
 const BLOCK_CLASS = 'header';
 
@@ -13,11 +13,23 @@ class Header {
   _findElements() {
     this.cartButtonElement = document.querySelector(`.${BLOCK_CLASS}__cart-button`);
     this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__cart-wrapper`);
+    this.burgerButtonElement = document.querySelector(`.${BLOCK_CLASS}__burger-button`);
+    this.mobileMenuWrapperElement = document.querySelector(`.${BLOCK_CLASS}__mobile-menu-wrapper`);
+  }
+
+  _transformBurger() {
+    this.burgerButtonElement.classList.toggle(`${BLOCK_CLASS}__burger-button${ACTIVE_MODIFIER}`);
   }
 
   _handleOpenCart(onAction) {
-    this.cartWrapperElement.classList.add(`${BLOCK_CLASS}__cart-wrapper${VISIBLE_MODIFIER}`);
     onAction?.();
+    this.cartWrapperElement.classList.add(`${BLOCK_CLASS}__cart-wrapper${VISIBLE_MODIFIER}`);
+  }
+
+  _handleToggleMenu(onAction) {
+    onAction?.();
+    this.mobileMenuWrapperElement.classList.toggle(`${BLOCK_CLASS}__mobile-menu-wrapper${VISIBLE_MODIFIER}`);
+    this._transformBurger();
   }
 
   _addSubscribes() {
@@ -35,6 +47,9 @@ class Header {
   _addEventListeners(options) {
     this.cartButtonElement.addEventListener('click',
       () => this._handleOpenCart(options.toggleScroll),
+    );
+    this.burgerButtonElement.addEventListener('click',
+      () => this._handleToggleMenu(options.toggleScroll),
     );
   }
 }
