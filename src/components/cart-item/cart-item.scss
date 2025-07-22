@@ -7,6 +7,12 @@
     border-top: 1px solid var(--rgba-dark-10);
   }
 
+  &__main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__image {
     width: 6rem;
     height: 6rem;

@@ -60,24 +60,26 @@ class Cart {
         <li class="${BLOCK_CLASS}__item">
           <div class="${CHILD_BLOCK_CLASS}" data-element="cartItem" data-id="${item.id}">
             <div class="${CHILD_BLOCK_CLASS}__wrapper">
-              <div class="${CHILD_BLOCK_CLASS}__image-wrapper">
-                <img class="${CHILD_BLOCK_CLASS}__image" src="${item.img}" alt="${item.altText || ''}">
-              </div>
-              <div class="${CHILD_BLOCK_CLASS}__info-wrapper">
-                <h3 class="${CHILD_BLOCK_CLASS}__title">${item.title}</h3>
-                <div class="${CHILD_BLOCK_CLASS}__price-wrapper">
-                  <span class="${CHILD_BLOCK_CLASS}__price" data-element="price">
-                    ${item.totalPrice}
-                  </span>
-                  <span class="${CHILD_BLOCK_CLASS}__currency"> ${item.currency}</span>
+              <div class="${CHILD_BLOCK_CLASS}__main-wrapper" data-element="mainWrapper">
+                <div class="${CHILD_BLOCK_CLASS}__image-wrapper">
+                  <img class="${CHILD_BLOCK_CLASS}__image" src="${item.img}" alt="${item.altText || ''}">
                 </div>
-              </div>
-              <div class="${CHILD_BLOCK_CLASS}__counter-wrapper" data-product-id=${item.id}>
-                <button type="button" class="${CHILD_BLOCK_CLASS}__decrement" data-element="decrement">-</button>
-                <span class="${CHILD_BLOCK_CLASS}__counter" data-element="counter">${item.count}</span>
-                <button type="button" class="${CHILD_BLOCK_CLASS}__increment" data-element="increment">
-                  +
-                </button>
+                <div class="${CHILD_BLOCK_CLASS}__info-wrapper">
+                  <h3 class="${CHILD_BLOCK_CLASS}__title">${item.title}</h3>
+                  <div class="${CHILD_BLOCK_CLASS}__price-wrapper">
+                    <span class="${CHILD_BLOCK_CLASS}__price" data-element="price">
+                      ${item.totalPrice}
+                    </span>
+                    <span class="${CHILD_BLOCK_CLASS}__currency"> ${item.currency}</span>
+                  </div>
+                </div>
+                <div class="${CHILD_BLOCK_CLASS}__counter-wrapper" data-product-id=${item.id}>
+                  <button type="button" class="${CHILD_BLOCK_CLASS}__decrement" data-element="decrement">-</button>
+                  <span class="${CHILD_BLOCK_CLASS}__counter" data-element="counter">${item.count}</span>
+                  <button type="button" class="${CHILD_BLOCK_CLASS}__increment" data-element="increment">
+                    +
+                  </button>
+                </div>
               </div>
               <div class="${CHILD_BLOCK_CLASS}__actions-wrapper">
                 <button
@@ -160,6 +162,7 @@ class Cart {
   _setCartItemEvents() {
     this.cartItemsListElement
       .querySelectorAll('[data-element="cartItem"]').forEach((cartItemElement) => {
+        const mainWrapperElement = cartItemElement.querySelector('[data-element="mainWrapper"]');
         const counterElement = cartItemElement.querySelector('[data-element="counter"]');
         const deleteElement = cartItemElement.querySelector('[data-element="delete"]');
         const repeatElement = cartItemElement.querySelector('[data-element="repeat"]');
@@ -197,6 +200,8 @@ class Cart {
           }
 
           if (event.target.dataset.element === 'delete') {
+            mainWrapperElement.style.pointerEvents = 'none';
+            mainWrapperElement.style.opacity = 0.2;
             deleteElement.style.display = "none";
             repeatElement.style.display = "block";
 
@@ -215,6 +220,8 @@ class Cart {
           }
 
           if (event.target.dataset.element === 'repeat') {
+            mainWrapperElement.style.opacity = 1;
+            mainWrapperElement.style.pointerEvents = 'auto';
             deleteElement.style.display = "block";
             repeatElement.style.display = "none";
 
