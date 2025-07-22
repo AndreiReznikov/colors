@@ -52,6 +52,10 @@
         background-color: var(--theme-color);
       }
     }
+
+    @media (max-width: constants.$screen-lg) {
+      display: block;
+    }
   }
 
   @media (hover: hover) {
