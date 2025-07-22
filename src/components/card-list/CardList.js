@@ -77,8 +77,9 @@ class CardList {
     this.cardListElement.querySelectorAll('[data-element="card"')
       .forEach((cardElement) => {
         cardElement.addEventListener('click', (event) => {
+          event.preventDefault(); // УБРАТЬ (ТОЛЬКО ДЛЯ ДЕМО)
+
           if (event.target.dataset.element !== 'cartIncrement') return;
-          event.preventDefault();
 
           const product = store.getState().products.find((product) =>
             Number(product.id) === Number(cardElement.dataset.id));

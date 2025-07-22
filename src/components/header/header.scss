@@ -14,11 +14,12 @@
     justify-content: space-between;
     align-items: center;
     max-width: constants.$max-width;
-    min-height: 6.5rem;
+    min-height: var(--header-height);
     margin: 0 auto;
     padding: 0 4rem;
 
     @media (max-width: constants.$screen-lg) {
+      min-height: var(--mobile-header-height);
       padding: 0;
       border-bottom: 1px solid var(--rgba-dark-10);
     }
@@ -30,6 +31,7 @@
     align-items: center;
     width: 4rem;
     height: 4rem;
+    margin-left: -1.25rem;
     background: transparent;
     border: none;
     cursor: pointer;
