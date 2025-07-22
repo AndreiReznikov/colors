@@ -14,5 +14,6 @@ mixin card(options = {})
       .card__price-wrapper
         span.card__price=options.price
         span.card__currency=' ' + options.currency
-      .card__actions-wrapper
+      .card__actions-wrapper(data-element="actionsWrapper")
         button.card__cart-button(data-element="cartIncrement") +
+      span.cart__status-text(data-element="statusText")

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { store } from "~store";
 import { productApi } from "~api";
 import { setProducts } from "~reducers/products";
@@ -51,14 +50,20 @@ class CardList {
               <span class="${CHILD_BLOCK_CLASS}__price">${item.price}</span>
               <span class="${CHILD_BLOCK_CLASS}__currency"> ${item.currency}</span>
             </div>
-            <div class="${CHILD_BLOCK_CLASS}__actions-wrapper">
-              <button
-                class="${CHILD_BLOCK_CLASS}__cart-button"
-                data-element="cartIncrement">
+            <div class="${CHILD_BLOCK_CLASS}__cart-wrapper">
+              <div
+                class="${CHILD_BLOCK_CLASS}__actions-wrapper"
+                data-element="actionsWrapper"
+              >
+                <button
+                  class="${CHILD_BLOCK_CLASS}__cart-button"
+                  data-element="cartIncrement"
+                >
                   +
-              </button>
+                </button>
+              </div>
+              <span class="${CHILD_BLOCK_CLASS}__status-text" data-element="statusText"></span>
             </div>
-          </div>
         </div>
       </li>`
     })
@@ -84,9 +89,31 @@ class CardList {
       });
   }
 
+  _setStatusText(items = []) {
+    this.cardListElement.querySelectorAll('[data-element="card"')
+      .forEach((cardElement) => {
+        const cartIncrementElement = cardElement.querySelector('[data-element="actionsWrapper"]');
+        const statusTextElement = cardElement.querySelector('[data-element="statusText"]');
+
+        if (!cartIncrementElement || !statusTextElement) return;
+
+        const addedToCart = items.some((item) => Number(item.id) === Number(cardElement.dataset.id));
+
+        if (addedToCart) {
+          cartIncrementElement.style.display = "none";
+          statusTextElement.textContent = "Товар в корзине";
+
+          return;
+        }
+
+        cartIncrementElement.style.display = "block";
+        statusTextElement.textContent = "";
+      });
+  }
+
   _setSubscribes() {
-    try {
-      store.subscribe("SET_SORT_TYPE", async (state = {}) => {
+    store.subscribe("SET_SORT_TYPE", async (state = {}) => {
+      try {
         const params = { ...state };
         const filters = store.getState().filters;
         filters?.forEach((filter) => params[filter] = true);
@@ -94,11 +121,11 @@ class CardList {
         const products = await productApi.getProducts(params);
         if (!products) return;
         store.dispatch(setProducts(products));
-      });
-    } catch (error) {
-      console.error('Ошибка:', error);
-      store.dispatch(setProducts([]));
-    }
+      } catch (error) {
+        console.error('Ошибка:', error);
+        store.dispatch(setProducts([]));
+      }
+    });
     store.subscribe("SET_FILTERS", async (state = []) => {
       try {
         const sort = store.getState().sort;
@@ -114,8 +141,19 @@ class CardList {
       }
     });
     store.subscribe("SET_PRODUCTS", (state = []) => {
+      const cart = store.getState().cart;
       this._renderList(state);
+      this._setStatusText(cart);
       this._setAddToCartEvent();
+    });
+    store.subscribe("ADD_TO_CART", (state = []) => {
+      this._setStatusText(state);
+    });
+    store.subscribe("REMOVE_FROM_CART", (state = []) => {
+      this._setStatusText(state);
+    });
+    store.subscribe("CLEAR_CART", (state = []) => {
+      this._setStatusText(state);
     });
   }
 }
