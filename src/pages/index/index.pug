@@ -11,7 +11,10 @@ block vars
     const keywords = 'Colors, marketplace, products, buy';
     const description = 'Colors marketplace';
     const pageTitle = 'Краски';
-    const subtitle = 'Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!';
+    const subtitle = `
+      Идеально подходят для стен и других поверхностей.
+      Найди свой идеальный цвет!
+    `;
 
     const { store } = require('~store');
     const {
@@ -32,7 +35,8 @@ block content
     .index__background-wrapper
       .index__title-wrapper
         h1.index__title=pageTitle
-        h2.index__subtitle=subtitle
+        h2.index__subtitle
+         pre.index__subtitle-pre=subtitle
       .index__glide-wrapper
         +glide(SLIDER_ITEMS)
     main.index__main

@@ -25,6 +25,14 @@
     }
   }
 
+  &__burger-wrapper {
+    display: none;
+
+    @media (max-width: constants.$screen-lg) {
+      display: block;
+    }
+  }
+
   &__burger-button {
     display: flex;
     justify-content: center;
@@ -205,8 +213,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
     font-size: 0.75rem;
     font-weight: 500;
     background-color: var(--theme-color);

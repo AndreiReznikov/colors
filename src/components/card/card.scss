@@ -38,8 +38,8 @@
 
   &__cart-button {
     display: none;
-    width: 5rem;
-    height: 2rem;
+    min-width: 5rem;
+    min-height: 2rem;
     font-size: 1.5rem;
     color: var(--bg-dark-color);
     background-color: var(--bg-gr-color);
