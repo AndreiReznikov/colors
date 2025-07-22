@@ -92,21 +92,21 @@ class CardList {
   _setStatusText(items = []) {
     this.cardListElement.querySelectorAll('[data-element="card"')
       .forEach((cardElement) => {
-        const cartIncrementElement = cardElement.querySelector('[data-element="actionsWrapper"]');
+        const actionsWrapperElement = cardElement.querySelector('[data-element="actionsWrapper"]');
         const statusTextElement = cardElement.querySelector('[data-element="statusText"]');
 
-        if (!cartIncrementElement || !statusTextElement) return;
+        if (!actionsWrapperElement || !statusTextElement) return;
 
         const addedToCart = items.some((item) => Number(item.id) === Number(cardElement.dataset.id));
 
         if (addedToCart) {
-          cartIncrementElement.style.display = "none";
+          actionsWrapperElement.style.display = "none";
           statusTextElement.textContent = "Товар в корзине";
 
           return;
         }
 
-        cartIncrementElement.style.display = "block";
+        actionsWrapperElement.style.display = "block";
         statusTextElement.textContent = "";
       });
   }
