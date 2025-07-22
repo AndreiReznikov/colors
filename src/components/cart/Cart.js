@@ -176,6 +176,26 @@ class Cart {
         cartItemElement.addEventListener('click', (event) => {
           const currentCount = Number(counterElement.innerHTML);
 
+          if (event.target.dataset.element === 'delete'
+            || (event.target.dataset.element === 'decrement' && currentCount === 1)) {
+            mainWrapperElement.style.pointerEvents = 'none';
+            mainWrapperElement.style.opacity = 0.2;
+            deleteElement.style.display = "none";
+            repeatElement.style.display = "block";
+
+            timerId = setTimeout(() => {
+              cartItemElement.remove();
+              store.dispatch(removeFromCart({ id }));
+              this._calculateTotalSum();
+              this._calculateTotalCount();
+              this._setOrderButtonProp();
+              this._setEmptyText();
+              this._setCartItemsControlProps();
+              this.cartSumElement.innerHTML = this.localeTotalSum;
+              this.cartItemsCountElement.innerHTML = this.countText;
+            }, 3000);
+          }
+
           if (event.target.dataset.element === 'increment') {
             counterElement.innerHTML = currentCount + 1;
             store.dispatch(incrementCartItem({ id }));
@@ -197,26 +217,6 @@ class Cart {
             priceElement.innerHTML = cartItem.totalPrice;
             this.cartSumElement.innerHTML = this.localeTotalSum;
             this.cartItemsCountElement.innerHTML = this.countText;
-          }
-
-          if (event.target.dataset.element === 'delete') {
-            mainWrapperElement.style.pointerEvents = 'none';
-            mainWrapperElement.style.opacity = 0.2;
-            deleteElement.style.display = "none";
-            repeatElement.style.display = "block";
-
-            timerId = setTimeout(() => {
-              cartItemElement.remove();
-              store.dispatch(removeFromCart({ id }));
-              this._calculateTotalSum();
-              this._calculateTotalCount();
-              this._setOrderButtonProp();
-              this._setEmptyText();
-              this._setCartItemsControlProps();
-              this.cartSumElement.innerHTML = this.localeTotalSum;
-              this.cartItemsCountElement.innerHTML = this.countText;
-            }, 3000);
-
           }
 
           if (event.target.dataset.element === 'repeat') {
