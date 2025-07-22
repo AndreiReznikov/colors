@@ -24,11 +24,23 @@ class Header {
   _handleOpenCart(onAction) {
     onAction?.();
     this.cartWrapperElement.classList.add(`${BLOCK_CLASS}__cart-wrapper${VISIBLE_MODIFIER}`);
+    this._handleCloseMenu(onAction);
   }
 
   _handleToggleMenu(onAction) {
     onAction?.();
     this.mobileMenuWrapperElement.classList.toggle(`${BLOCK_CLASS}__mobile-menu-wrapper${VISIBLE_MODIFIER}`);
+    this._transformBurger();
+  }
+
+  _handleCloseMenu(onAction) {
+    const visibleClass = `${BLOCK_CLASS}__mobile-menu-wrapper${VISIBLE_MODIFIER}`;
+    const isMenuOpened = this.mobileMenuWrapperElement.classList.contains(visibleClass);
+
+    if (!isMenuOpened) return;
+
+    onAction?.();
+    this.mobileMenuWrapperElement.classList.remove(visibleClass);
     this._transformBurger();
   }
 

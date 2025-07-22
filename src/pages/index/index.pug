@@ -16,6 +16,7 @@ block vars
       Идеально подходят для стен и других поверхностей.
       Найди свой идеальный цвет!
     `;
+    const filtersButton = 'Фильтры';
 
     const { store } = require('~store');
     const {
@@ -48,6 +49,8 @@ block content
       section.index__products-section
         .index__sort-wrapper
           span.index__products-count
+          .index__filters-button-wrapper
+            button.index__filters-button=filtersButton
           .index__selector-wrapper
             +selector({
               selected,
