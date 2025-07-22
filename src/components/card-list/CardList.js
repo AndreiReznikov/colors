@@ -26,45 +26,47 @@ class CardList {
 
     items.forEach((item = {}) => {
       listHtml += `
-      <li class=".${BLOCK_CLASS}__item">
-        <div
-          class="${CHILD_BLOCK_CLASS}"
-          data-id="${item.id}"
-          data-element="card"
-        >
-          <div class="${CHILD_BLOCK_CLASS}__image-wrapper">
-            <img
-              class="${CHILD_BLOCK_CLASS}__image"
-              src="${item.img}"
-              alt="${item.title}"
-              loading="lazy"
-              width="278"
-              height="278"
-            >
-          </div>
-          <div class="${CHILD_BLOCK_CLASS}__title-wrapper">
-            <h3 class="${CHILD_BLOCK_CLASS}__title">${item.title}</h3>
-          </div>
-          <div class="${CHILD_BLOCK_CLASS}__bottom-wrapper">
-            <div class="${CHILD_BLOCK_CLASS}__price-wrapper">
-              <span class="${CHILD_BLOCK_CLASS}__price">${item.price}</span>
-              <span class="${CHILD_BLOCK_CLASS}__currency"> ${item.currency}</span>
-            </div>
-            <div class="${CHILD_BLOCK_CLASS}__cart-wrapper">
-              <div
-                class="${CHILD_BLOCK_CLASS}__actions-wrapper"
-                data-element="actionsWrapper"
+      <li class="${BLOCK_CLASS}__item">
+        <a class="${BLOCK_CLASS}__link" href="colors/${item.id}">
+          <div
+            class="${CHILD_BLOCK_CLASS}"
+            data-id="${item.id}"
+            data-element="card"
+          >
+            <div class="${CHILD_BLOCK_CLASS}__image-wrapper">
+              <img
+                class="${CHILD_BLOCK_CLASS}__image"
+                src="${item.img}"
+                alt="${item.title}"
+                loading="lazy"
+                width="278"
+                height="278"
               >
-                <button
-                  class="${CHILD_BLOCK_CLASS}__cart-button"
-                  data-element="cartIncrement"
-                >
-                  +
-                </button>
-              </div>
-              <span class="${CHILD_BLOCK_CLASS}__status-text" data-element="statusText"></span>
             </div>
-        </div>
+            <div class="${CHILD_BLOCK_CLASS}__title-wrapper">
+              <h3 class="${CHILD_BLOCK_CLASS}__title">${item.title}</h3>
+            </div>
+            <div class="${CHILD_BLOCK_CLASS}__bottom-wrapper">
+              <div class="${CHILD_BLOCK_CLASS}__price-wrapper">
+                <span class="${CHILD_BLOCK_CLASS}__price">${item.price}</span>
+                <span class="${CHILD_BLOCK_CLASS}__currency"> ${item.currency}</span>
+              </div>
+              <div class="${CHILD_BLOCK_CLASS}__cart-wrapper">
+                <div
+                  class="${CHILD_BLOCK_CLASS}__actions-wrapper"
+                  data-element="actionsWrapper"
+                >
+                  <button
+                    class="${CHILD_BLOCK_CLASS}__cart-button"
+                    data-element="cartIncrement"
+                  >
+                    +
+                  </button>
+                </div>
+                <span class="${CHILD_BLOCK_CLASS}__status-text" data-element="statusText"></span>
+              </div>
+          </div>
+        </a>
       </li>`
     })
 
@@ -76,6 +78,7 @@ class CardList {
       .forEach((cardElement) => {
         cardElement.addEventListener('click', (event) => {
           if (event.target.dataset.element !== 'cartIncrement') return;
+          event.preventDefault();
 
           const product = store.getState().products.find((product) =>
             Number(product.id) === Number(cardElement.dataset.id));

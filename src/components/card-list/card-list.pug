@@ -10,4 +10,5 @@ mixin card-list(options = {})
       each product in products
         - const { id, title, price, currency, img } = product;
         li.card-list__item
-          +card({ id, title, price, currency, img })
+          a.card-list__link(href=options.href)
+            +card({ id, title, price, currency, img })

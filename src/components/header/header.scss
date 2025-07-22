@@ -42,8 +42,10 @@
     text-decoration: none;
     text-transform: uppercase;
 
-    &:hover {
-      color: var(--theme-color);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--theme-color);
+      }
     }
   }
 
@@ -76,8 +78,10 @@
     width: 1.5rem;
     height: 1.5rem;
 
-    &:hover {
-      background-color: var(--rgba-dark-10);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--rgba-dark-10);
+      }
     }
   }
 
@@ -94,8 +98,10 @@
     border-radius: 50%;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--theme-color-dark);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--theme-color-dark);
+      }
     }
   }
 

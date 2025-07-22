@@ -2,8 +2,10 @@
   position: relative;
   padding-right: 0.9375rem;
 
-  &:hover {
-    background-color: var(--rgba-dark-10);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--rgba-dark-10);
+    }
   }
 
   &__button {
@@ -70,8 +72,10 @@
     text-transform: uppercase;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--theme-color);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--theme-color);
+      }
     }
   }
 

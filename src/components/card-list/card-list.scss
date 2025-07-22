@@ -10,4 +10,9 @@
     padding: 0;
     list-style-type: none;
   }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
 }

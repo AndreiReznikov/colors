@@ -36,13 +36,19 @@ $circle-margin: 0.4375rem;
 
   &__text {
     padding-left: 3.125rem;
-    font-size: .75rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
   }
 
   &__input {
     position: absolute;
     appearance: none;
+  }
+
+  @media (hover: hover) {
+    &:hover > &__input:not(:checked) + &__custom-input {
+      border: 1px solid var(--theme-color);
+    }
   }
 
   &__input:checked + &__custom-input {

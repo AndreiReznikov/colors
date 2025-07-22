@@ -36,9 +36,11 @@
     cursor: pointer;
   }
 
-  &__decrement:hover,
-  &__increment:hover {
-    background: var(--bg-gr-color-dark);
+  @media (hover: hover) {
+    &__decrement:hover,
+    &__increment:hover {
+      background: var(--bg-gr-color-dark);
+    }
   }
 
   &__counter {
@@ -78,15 +80,17 @@
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
-  &__delete-button:hover {
-    opacity: 1;
+  @media (hover: hover) {
+    &__delete-button:hover {
+      opacity: 1;
+    }
   }
 
   &__repeat-button {
     display: none;
     width: 1.5rem;
     height: 1.5rem;
-    background-image: url('../../assets/icons/repeat.svg');
+    background-image: url("../../assets/icons/repeat.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;

@@ -47,12 +47,16 @@
     border: none;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--theme-color);
+    @media (hover: hover) {
+      & {
+        background-color: var(--theme-color);
+      }
     }
   }
 
-  &:hover &__cart-button {
-    display: block;
+  @media (hover: hover) {
+    &:hover &__cart-button {
+      display: block;
+    }
   }
 }
