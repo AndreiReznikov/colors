@@ -17,17 +17,17 @@ class Cart {
   }
 
   _findElements() {
-    this.closeButtonElement = document.querySelector(`.${BLOCK_CLASS}__close-button`);
     this.cartElement = document.querySelector(`.${BLOCK_CLASS}`);
-    this.cartWrapperElement = document.querySelector(`.${BLOCK_CLASS}__wrapper`);
-    this.cartItemsControlWrapperElement = document.querySelector(`.${BLOCK_CLASS}__items-control-wrapper`);
-    this.cartItemsCountElement = document.querySelector(`.${BLOCK_CLASS}__items-count`);
-    this.cartItemsListElement = document.querySelector(`.${BLOCK_CLASS}__items-list`);
-    this.cartSumElement = document.querySelector(`.${BLOCK_CLASS}__sum`);
-    this.cartEmptyTextElement = document.querySelector(`.${BLOCK_CLASS}__empty-text`);
-    this.cartOrderButtonElement = document.querySelector(`.${BLOCK_CLASS}__order-button`);
-    this.cartClearButtonElement = document.querySelector(`.${BLOCK_CLASS}__clear-button`);
-    this.scrimElement = document.querySelector(`.${BLOCK_CLASS}__scrim`);
+    this.closeButtonElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__close-button`);
+    this.cartWrapperElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__wrapper`);
+    this.cartItemsControlWrapperElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__items-control-wrapper`);
+    this.cartItemsCountElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__items-count`);
+    this.cartItemsListElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__items-list`);
+    this.cartSumElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__sum`);
+    this.cartEmptyTextElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__empty-text`);
+    this.cartOrderButtonElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__order-button`);
+    this.cartClearButtonElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__clear-button`);
+    this.scrimElement = this.cartElement.querySelector(`.${BLOCK_CLASS}__scrim`);
     this.cartParentElement = this.cartElement.parentElement;
   }
 
