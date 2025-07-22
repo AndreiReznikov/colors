@@ -3,6 +3,7 @@
 @import "normalize.css";
 @import "~templates/default";
 @import "~templates/fonts";
+@import "~components/breadcrumbs/breadcrumbs";
 @import "~components/footer/footer";
 @import "~components/glide/glide";
 @import "~components/header/header";
@@ -49,6 +50,19 @@
 
     @media (max-width: constants.$screen-lg) {
       margin: 1.5rem;
+    }
+  }
+
+  &__breadcrumbs-wrapper {
+    position: absolute;
+    top: 32px;
+    left: 64px;
+    z-index: 5;
+
+    @media (max-width: constants.$screen-lg) {
+      position: static;
+      top: 0;
+      left: 0;
     }
   }
 
@@ -146,7 +160,7 @@
     display: none;
     background: transparent;
     border: none;
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
 

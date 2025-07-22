@@ -127,21 +127,25 @@
     text-transform: uppercase;
     cursor: pointer;
 
-    @media (hover: hover) {
-      &:hover {
-        background-color: var(--theme-color-dark);
-      }
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        background-color: var(--theme-color-dark);
-      }
-    }
-
     &:disabled {
       background-color: var(--rgba-dark-40);
       cursor: not-allowed;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--theme-color-dark);
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--theme-color-dark);
+      }
+    }
+
+    @media (max-width: constants.$screen-sm) {
+      width: 10rem;
     }
   }
 

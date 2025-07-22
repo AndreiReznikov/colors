@@ -96,3 +96,5 @@ export const HEADER_OPTIONS = {
     },
   ],
 };
+
+export const BREADCRUMBS_ITEMS = ['Главная', 'Продукты', 'Краски'];

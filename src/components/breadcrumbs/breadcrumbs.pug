@@ -1,0 +1,10 @@
+mixin breadcrumbs(items)
+  nav.breadcrumbs(aria-label="Breadcrumb")
+    ol.breadcrumbs__list
+      each item, index in items
+        li.breadcrumbs__item
+          if index < items.length - 1
+            a.breadcrumbs__link(href="#")=item
+            span.breadcrumbs__separator
+          else
+            span.breadcrumbs__current=item

@@ -1,4 +1,5 @@
 extends ~pages-base/page-base
+include ~components/breadcrumbs/breadcrumbs
 include ~components/glide/glide
 include ~components/selector/selector
 include ~components/toggle-sheet/toggle-sheet
@@ -24,6 +25,7 @@ block vars
       TOGGLE_ITEMS,
       SELECTOR_ITEMS,
       HEADER_OPTIONS,
+      BREADCRUMBS_ITEMS,
     } = require('./mock.js');
     const products = store.getState().products;
     const sort = store.getState().sort;
@@ -35,6 +37,8 @@ block vars
 block content
   .index__container
     .index__background-wrapper
+      .index__breadcrumbs-wrapper
+        +breadcrumbs(BREADCRUMBS_ITEMS)
       .index__title-wrapper
         h1.index__title=pageTitle
         h2.index__subtitle
