@@ -77,7 +77,7 @@ class CardList {
     this.cardListElement.querySelectorAll('[data-element="card"')
       .forEach((cardElement) => {
         cardElement.addEventListener('click', (event) => {
-          event.preventDefault(); // УБРАТЬ (ТОЛЬКО ДЛЯ ДЕМО)
+          event.preventDefault(); // ПЕРЕНЕСТИ ПОД УСЛОВИЕ (ТОЛЬКО ДЛЯ ДЕМО)
 
           if (event.target.dataset.element !== 'cartIncrement') return;
 

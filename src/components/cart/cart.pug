@@ -8,30 +8,31 @@ mixin cart(options = {})
     const cartCount = cart.reduce((total, item) => total += item.count, 0);
 
   .cart
-    .cart__wrapper
-      .cart__title-wrapper
-        h2.cart__title=options.title
-        .cart__close-button-wrapper
-          button.cart__close-button(aria-label="Закрыть корзину")
-      .cart__items-control-wrapper
-        span.cart__items-count=cartCount
-        .cart__clear-button-wrapper
-          button.cart__clear-button=options.clearText
-      .cart__items-wrapper
-        span.cart__empty-text=!cartLength ? options.emptyText : ''
-        ul.cart__items-list
-          each item in cart
-            - const { id, title, totalPrice, currency, img, count } = item;
-            li.cart__item
-              +cart-item({ id, title, totalPrice, currency, img, count })
-      .cart__order-wrapper
-        .cart__total-sum-wrapper
-          .cart__sum-text-wrapper
-            span.cart__sum-text=options.sumText
-          .cart__sum-wrapper
-            span.cart__sum=options.totalSum
-            span.cart__currency=options.currency
-        .cart__order-button-wrapper
-          button.cart__order-button(disabled="true")=options.orderText
+    form.cart__form
+      .cart__wrapper
+        .cart__title-wrapper
+          h2.cart__title=options.title
+          .cart__close-button-wrapper
+            button.cart__close-button(type="button" aria-label="Закрыть корзину")
+        .cart__items-control-wrapper
+          span.cart__items-count=cartCount
+          .cart__clear-button-wrapper
+            button.cart__clear-button(type="button")=options.clearText
+        .cart__items-wrapper
+          span.cart__empty-text=!cartLength ? options.emptyText : ''
+          ul.cart__items-list
+            each item in cart
+              - const { id, title, totalPrice, currency, img, count } = item;
+              li.cart__item
+                +cart-item({ id, title, totalPrice, currency, img, count })
+        .cart__order-wrapper
+          .cart__total-sum-wrapper
+            .cart__sum-text-wrapper
+              span.cart__sum-text=options.sumText
+            .cart__sum-wrapper
+              span.cart__sum=options.totalSum
+              span.cart__currency=options.currency
+          .cart__order-button-wrapper
+            button.cart__order-button(disabled="true")=options.orderText
 
     .cart__scrim

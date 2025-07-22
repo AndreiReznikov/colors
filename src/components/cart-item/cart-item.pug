@@ -9,9 +9,15 @@ mixin cart-item(options = {})
           span.cart-item__price=options.totalPrice
           span.cart-item__currency=' ' + options.currency
       .cart-item__counter-wrapper
-        button.cart-item__decrement(data-element="decrement") -
+        button.cart-item__decrement(type="button" data-element="decrement") -
         span.cart-item__counter(data-element="counter") 0
-        button.cart-item__increment(data-element="increment") +
+        button.cart-item__increment(type="button" data-element="increment") +
       .cart-item__actions-wrapper
-        button.cart-item__delete-button(aria-label=`Удалить продукт ${options.title} из корзины`)
-        button.cart-item__repeat-button(aria-label=`Вернуть продукт ${options.title} в корзину`)
+        button.cart-item__delete-button(
+          type="button"
+          aria-label=`Удалить продукт ${options.title} из корзины`
+        )
+        button.cart-item__repeat-button(
+          type="button"
+          aria-label=`Вернуть продукт ${options.title} в корзину`
+        )

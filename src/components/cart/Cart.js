@@ -73,20 +73,22 @@ class Cart {
                 </div>
               </div>
               <div class="${CHILD_BLOCK_CLASS}__counter-wrapper" data-product-id=${item.id}>
-                <button class="${CHILD_BLOCK_CLASS}__decrement" data-element="decrement">-</button>
+                <button type="button" class="${CHILD_BLOCK_CLASS}__decrement" data-element="decrement">-</button>
                 <span class="${CHILD_BLOCK_CLASS}__counter" data-element="counter">${item.count}</span>
-                <button class="${CHILD_BLOCK_CLASS}__increment" data-element="increment">
+                <button type="button" class="${CHILD_BLOCK_CLASS}__increment" data-element="increment">
                   +
                 </button>
               </div>
               <div class="${CHILD_BLOCK_CLASS}__actions-wrapper">
                 <button
                   class="${CHILD_BLOCK_CLASS}__delete-button"
+                  type="button"
                   data-element="delete"
                   aria-label="Удалить продукт ${item.title} из корзины"
                 ></button>
                 <button
                   class="${CHILD_BLOCK_CLASS}__repeat-button"
+                  type="button"
                   data-element="repeat"
                   aria-label="Вернуть продукт ${item.title} в корзину"
                 ></button>
