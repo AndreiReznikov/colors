@@ -2,4 +2,8 @@
   width: 100%;
   min-height: 18.75rem;
   background-color: var(--bg-dark-color);
+
+  @media (max-width: constants.$screen-lg) {
+    min-height: 12rem;
+  }
 }
