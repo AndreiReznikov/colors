@@ -3,5 +3,8 @@ mixin sheet(options = {})
     .sheet__wrapper
       .sheet__handle-wrapper
         .sheet__handle
+      .sheet__content-wrapper
+        if block
+          block
 
     .sheet__scrim

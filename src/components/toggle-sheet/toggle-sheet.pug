@@ -1,0 +1,7 @@
+include ~components/sheet/sheet
+include ~components/toggle-list/toggle-list
+
+mixin toggle-sheet(items = [], options = {})
+  +sheet()
+    .toggle-sheet
+      +toggle-list(items)
