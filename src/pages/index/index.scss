@@ -46,6 +46,10 @@
 
   &__background-wrapper {
     position: relative;
+
+    @media (max-width: constants.$screen-lg) {
+      margin: 1.5rem;
+    }
   }
 
   &__title-wrapper {
@@ -59,16 +63,39 @@
     text-align: center;
     pointer-events: none;
     z-index: 5;
+
+    @media (max-width: constants.$screen-lg) {
+      position: static;
+      top: 0;
+      left: 0;
+      transform: none;
+      text-align: left;
+    }
   }
 
   &__title {
     margin: 0;
     font-size: 4.5rem;
     font-weight: 400;
+
+    @media (max-width: constants.$screen-lg) {
+      font-size: 2.25rem;
+      color: var(--text-color);
+    }
   }
 
   &__subtitle {
     font-weight: 400;
+
+    @media (max-width: constants.$screen-lg) {
+      display: none;
+    }
+  }
+
+  &__glide-wrapper {
+    @media (max-width: constants.$screen-lg) {
+      display: none;
+    }
   }
 
   &__main {
@@ -76,16 +103,19 @@
     max-width: constants.$max-width;
     margin: 0 auto;
     padding: 4.5rem 4rem;
+
+    @media (max-width: constants.$screen-lg) {
+      padding: 1.5rem;
+    }
   }
 
   &__filters-section {
     max-width: 18rem;
     width: 100%;
-  }
 
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
+    @media (max-width: constants.$screen-lg) {
+      display: none;
+    }
   }
 
   &__products-section {
@@ -100,7 +130,7 @@
   }
 
   &__products-count {
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-weight: 500;
   }
 }

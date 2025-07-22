@@ -13,6 +13,10 @@ mixin header(options = {})
 
   header.header
     .header__wrapper
+      .header__burger-wrapper
+        .header__burger
+          button.header__burger-button(aria-label="Меню")
+            span.header__burger-lines
       .header__left-block
         .header__logo-wrapper
           a.header__logo__link(href="/")
@@ -27,6 +31,7 @@ mixin header(options = {})
                     href=link
                   )
                     span.header__menu-text=title
+
       .header__right-block
         if options.number
           .header__phone-wrapper
