@@ -1,6 +1,7 @@
 extends ~pages-base/page-base
 include ~components/glide/glide
 include ~components/selector/selector
+include ~components/sheet/sheet
 include ~components/card-list/card-list
 include ~components/toggle-list/toggle-list
 
@@ -56,3 +57,5 @@ block content
             })
         .index__products-wrapper
           +card-list()
+      .index__sheet-wrapper
+        +sheet()

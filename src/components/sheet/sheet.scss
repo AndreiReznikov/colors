@@ -1,0 +1,37 @@
+.sheet {
+  &__wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 66%;
+    background-color: var(--bg-color);
+    border-radius: 1.5rem 1.5rem 0 0;
+    overflow-y: scroll;
+    z-index: 101;
+  }
+
+  &__handle-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: .75rem 0;
+  }
+
+  &__handle {
+    width: 1.5rem;
+    height: .25rem;
+    border-radius: 2.5rem;
+    background-color: var(--text-color);
+    opacity: 0.6;
+  }
+
+  &__scrim {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--rgba-dark-70);
+    z-index: 100;
+  }
+}

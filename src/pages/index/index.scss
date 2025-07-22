@@ -3,11 +3,12 @@
 @import "normalize.css";
 @import "~templates/default";
 @import "~templates/fonts";
-@import "~components/card-list/card-list";
 @import "~components/footer/footer";
 @import "~components/glide/glide";
 @import "~components/header/header";
 @import "~components/selector/selector";
+@import "~components/sheet/sheet";
+@import "~components/card-list/card-list";
 @import "~components/toggle-list/toggle-list";
 
 .index {
