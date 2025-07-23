@@ -6,7 +6,7 @@
   background-color: var(--bg-color);
 
   @media (max-width: constants.$screen-lg) {
-    padding: 0 1.5rem;
+    padding: 0 24px;
   }
 
   &__wrapper {
@@ -16,7 +16,7 @@
     max-width: constants.$max-width;
     min-height: var(--header-height);
     margin: 0 auto;
-    padding: 0 4rem;
+    padding: 0 64px;
 
     @media (max-width: constants.$screen-lg) {
       min-height: var(--mobile-header-height);

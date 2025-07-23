@@ -4,7 +4,7 @@
   right: 0;
   width: 100vw;
   height: calc(100vh - var(--mobile-header-height));
-  padding: 0 1.5rem;
+  padding: 0 24px;
   background-color: var(--bg-color);
   overflow-y: auto;
   z-index: 100;
@@ -51,6 +51,6 @@
   }
 
   &__icons-menu-text {
-    margin-left: 1.5rem;
+    margin-left: 24px;
   }
 }
