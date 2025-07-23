@@ -73,6 +73,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/pages/index/index.pug',
         filename: 'index.html',
+        favicon: './src/assets/favicon/favicon.svg',
       }),
       new MiniCssExtractPlugin({
         filename: 'styles.[contenthash].css',
