@@ -138,6 +138,21 @@
     }
   }
 
+  &__logo-wrapper {
+    @media (max-width: constants.$screen-lg) {
+      display: none;
+    }
+  }
+
+  &__logo-mobile-wrapper {
+    display: none;
+    margin-right: 16px;
+
+    @media (max-width: constants.$screen-lg) {
+      display: block;
+    }
+  }
+
   &__menu-list {
     display: flex;
     gap: 1.5rem;

@@ -105,12 +105,14 @@ class CardList {
 
         if (addedToCart) {
           actionsWrapperElement.style.display = "none";
+          statusTextElement.style.display = "block";
           statusTextElement.textContent = "Товар в корзине";
 
           return;
         }
 
         actionsWrapperElement.style.display = "block";
+        statusTextElement.style.display = "none";
         statusTextElement.textContent = "";
       });
   }

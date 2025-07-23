@@ -15,6 +15,10 @@
     padding: 30px 40px;
     background-color: var(--bg-color);
     z-index: 101;
+
+    @media (max-width: constants.$screen-sm) {
+      padding: 15px;
+    }
   }
 
   &__title-wrapper {
@@ -106,6 +110,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-top: 32px;
   }
 
   &__total-sum-wrapper {

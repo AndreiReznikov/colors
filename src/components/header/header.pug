@@ -1,5 +1,6 @@
 include ~components/cart/cart
 include ~components/logo/logo
+include ~components/logo-mobile/logo-mobile
 include ~components/mobile-menu/mobile-menu
 
 mixin header(options = {})
@@ -20,8 +21,11 @@ mixin header(options = {})
             span.header__burger-lines
       .header__left-block
         .header__logo-wrapper
-          a.header__logo__link(href="/")
-            +logo()
+          a.header__logo-link(href="/")
+            +logo
+        .header__logo-mobile-wrapper
+          a.header__logo-mobile-link(href="/")
+            +logo-mobile
         .header__menu-wrapper
           nav.header__menu
             ul.header__menu-list

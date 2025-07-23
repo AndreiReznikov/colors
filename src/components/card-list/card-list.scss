@@ -4,11 +4,16 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     gap: 16px 24px;
     width: 100%;
     margin: 44px 0;
     padding: 0;
     list-style-type: none;
+
+    @media (max-width: constants.$screen-sm) {
+      gap: 24px 15px;
+    }
   }
 
   &__link {
