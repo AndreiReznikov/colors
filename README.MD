@@ -1,7 +1,7 @@
 # Тестовое задание для its.agency — Каталог товаров
 
-[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=flat-square)](https://andreireznikov.github.io/colors)
 _Демо-версия проекта_
+[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=flat-square)](https://andreireznikov.github.io/colors)
 
 ## Реализованные функции
 
