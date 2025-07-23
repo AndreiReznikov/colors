@@ -113,10 +113,12 @@
   }
 
   &__left-block {
-    max-width: 50rem;
+    max-width: 53rem;
+    margin-right: 8rem;
 
     @media (max-width: constants.$screen-xl) {
-      max-width: 42rem;
+      max-width: 43rem;
+      margin-right: 0;
     }
 
     @media (max-width: constants.$screen-lg) {
@@ -125,7 +127,7 @@
   }
 
   &__right-block {
-    max-width: 25rem;
+    max-width: 26.6rem;
 
     @media (max-width: constants.$screen-xl) {
       max-width: 22rem;
@@ -151,6 +153,7 @@
   &__menu-link {
     font-size: 0.875rem;
     color: var(--text-color);
+    letter-spacing: 0.05rem;
     text-decoration: none;
     text-transform: uppercase;
 
@@ -158,6 +161,10 @@
       &:hover {
         color: var(--theme-color);
       }
+    }
+
+    @media (max-width: constants.$screen-xl) {
+      letter-spacing: 0;
     }
   }
 
@@ -183,7 +190,7 @@
 
   &__icons-menu-list {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.4rem;
     margin: 0;
     padding: 0;
     list-style-type: none;

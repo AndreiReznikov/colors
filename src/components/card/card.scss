@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 17.375rem;
   min-height: 23.5rem;
-  padding-bottom: 0.875rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--rgba-dark-10);
 
   &__image-wrapper {
@@ -16,12 +16,12 @@
   }
 
   &__image {
-    width: 12.5rem;
-    height: 12.5rem;
     object-fit: cover;
   }
 
   &__title {
+    margin-top: .925rem;
+    font-size: 1rem;
     font-weight: 300;
   }
 

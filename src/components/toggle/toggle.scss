@@ -7,8 +7,7 @@ $circle-margin: 0.4375rem;
   display: flex;
   align-items: center;
   position: relative;
-  margin-bottom: 0.625rem;
-  line-height: 1.5rem;
+  line-height: 1.925rem;
   cursor: pointer;
 
   &__custom-input {
@@ -38,6 +37,7 @@ $circle-margin: 0.4375rem;
     padding-left: 3.125rem;
     font-size: 0.75rem;
     text-transform: uppercase;
+    letter-spacing: 0.025rem;
   }
 
   &__input {
