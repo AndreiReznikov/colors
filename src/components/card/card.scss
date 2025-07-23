@@ -71,11 +71,15 @@
     }
 
     @media (hover: hover) {
-      background-color: var(--theme-color);
+      & {
+        background-color: var(--theme-color);
+      }
     }
 
     @media (hover: none) and (pointer: coarse) {
-      display: block;
+      & {
+        display: block;
+      }
     }
   }
 
