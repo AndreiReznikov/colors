@@ -10,6 +10,8 @@ const CHILD_BLOCK_CLASS = 'cart-item';
 
 class Cart {
   init(options = {}) {
+    this.preDeletedIds = []
+
     this._findElements();
     this._addSubscribes()
     this._addEventListeners(options);
@@ -114,7 +116,12 @@ class Cart {
 
   _calculateTotalSum() {
     this.totalSum = store.getState().cart.reduce(
-      (sum, item) => sum += Number(item.totalPrice), 0);
+      (sum, item) => {
+        const shouldContinue = this.preDeletedIds.includes(Number(item.id));
+        if (shouldContinue) return sum;
+
+        return sum += Number(item.totalPrice);
+      }, 0);
     this.localeTotalSum = this.totalSum.toLocaleString();
   }
 
@@ -168,9 +175,8 @@ class Cart {
         const repeatElement = cartItemElement.querySelector('[data-element="repeat"]');
         const priceElement = cartItemElement.querySelector('[data-element="price"]');
         const id = Number(cartItemElement.dataset.id);
-        const cartItem = store.getState().cart.find(
-          (item) => Number(item.id) === id,
-        );
+        const cart = store.getState().cart;
+        const cartItem = cart.find((item) => Number(item.id) === id);
         let timerId;
 
         cartItemElement.addEventListener('click', (event) => {
@@ -183,6 +189,10 @@ class Cart {
             deleteElement.style.display = "none";
             repeatElement.style.display = "block";
 
+            this.preDeletedIds.push(id);
+            this._calculateTotalSum();
+            this.cartSumElement.innerHTML = this.localeTotalSum;
+
             timerId = setTimeout(() => {
               cartItemElement.remove();
               store.dispatch(removeFromCart({ id }));
@@ -191,6 +201,7 @@ class Cart {
               this._setOrderButtonProp();
               this._setEmptyText();
               this._setCartItemsControlProps();
+              this.preDeletedIds = this.preDeletedIds.filter((num) => num !== id);
               this.cartSumElement.innerHTML = this.localeTotalSum;
               this.cartItemsCountElement.innerHTML = this.countText;
             }, 3000);
@@ -224,6 +235,10 @@ class Cart {
             mainWrapperElement.style.pointerEvents = 'auto';
             deleteElement.style.display = "block";
             repeatElement.style.display = "none";
+
+            this.preDeletedIds = this.preDeletedIds.filter((num) => num !== id);
+            this._calculateTotalSum();
+            this.cartSumElement.innerHTML = this.localeTotalSum;
 
             clearTimeout(timerId);
           }
