@@ -22,12 +22,12 @@ export const SELECTOR_ITEMS = [
 ];
 
 export const SLIDER_ITEMS = [
-  { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-  { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-  { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-  { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-  { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
-  { src: "../assets/img/colors.webp", alt: "Изображение вазы" },
+  { src: "colors.webp", alt: "Изображение вазы" },
+  { src: "colors.webp", alt: "Изображение вазы" },
+  { src: "colors.webp", alt: "Изображение вазы" },
+  { src: "colors.webp", alt: "Изображение вазы" },
+  { src: "colors.webp", alt: "Изображение вазы" },
+  { src: "colors.webp", alt: "Изображение вазы" },
 ];
 
 export const TOGGLE_ITEMS = [
@@ -81,17 +81,17 @@ export const HEADER_OPTIONS = {
   icons: [
     {
       link: "/mock-address/change-me",
-      src: "../assets/icons/search.svg",
+      src: "search.svg",
       text: "Поиск",
     },
     {
       link: "/mock-address/change-me",
-      src: "../assets/icons/profile.svg",
+      src: "profile.svg",
       text: "Профиль",
     },
     {
       link: "/mock-address/change-me",
-      src: "../assets/icons/heart.svg",
+      src: "heart.svg",
       text: "Избранное",
     },
   ],

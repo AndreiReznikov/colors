@@ -54,7 +54,7 @@ mixin header(options = {})
                     href=link
                     aria-label=text
                   )
-                    img.header__icon(src=src)
+                    img.header__icon(src=require(`~assets/icons/${src}`))
               li.header__icons-menu-item
                 button.header__cart-button(
                   aria-label="Открыть корзину"

@@ -9,7 +9,7 @@ mixin glide(images, options = {})
         each img in images
           .glide__slide
             img.glide__image(
-              src=img.src,
+              src=require(`~assets/img/${img.src}`),
               alt=img.alt,
               loading="lazy"
               width="1920",
