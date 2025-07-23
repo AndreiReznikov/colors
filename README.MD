@@ -1,7 +1,8 @@
 # Тестовое задание для its.agency — Каталог товаров
 
-_Демо-версия проекта_
-[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=flat-square)](https://andreireznikov.github.io/colors)
+## Демо-версия проекта:
+
+[GitHub Pages](https://andreireznikov.github.io/colors)
 
 ## Реализованные функции
 
@@ -17,12 +18,12 @@ _Демо-версия проекта_
 ## Технологии
 
 - **Основные**:
-  ![Pug](https://img.shields.io/badge/Pug-1.0.0-%23a86454)
-  ![SCSS](https://img.shields.io/badge/SCSS-1.72.0-%23c6538c)
+  ![Pug](https://img.shields.io/badge/Pug-3.0.0-%23a86454)
+  ![SCSS](https://img.shields.io/badge/SCSS-1.29.0-%23c6538c)
   ![ES6+](https://img.shields.io/badge/JavaScript-ES6+-%23f7df1e)
 
 - **Библиотеки**:
-  ![Glide.js](https://img.shields.io/badge/Glide.js-3.6.0-%2300d1b2)
+  ![Glide.js](https://img.shields.io/badge/Glide.js-3.7.1-%2300d1b2)
   ![Axios](https://img.shields.io/badge/Axios-1.6.2-%235a29e4)
 
 - **Сборка**:
