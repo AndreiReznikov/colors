@@ -16,5 +16,5 @@ mixin mobile-menu(options = {})
             a.mobile-menu__icons-menu-link(
               href=link
             )
-              img.mobile-menu__icon(src=`~assets/icons/${src}`)
+              img.mobile-menu__icon(src=require(`~assets/icons/${src}`))
               span.mobile-menu__icons-menu-text=text
