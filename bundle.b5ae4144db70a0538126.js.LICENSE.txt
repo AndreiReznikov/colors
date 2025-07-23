@@ -1,0 +1,7 @@
+/*!
+ * Glide.js v3.7.1
+ * (c) 2013-2024 Jędrzej Chałubek (https://github.com/jedrzejchalubek/)
+ * Released under the MIT License.
+ */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
