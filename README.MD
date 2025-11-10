@@ -1,8 +1,8 @@
 # Каталог товаров
 
-## Демо-версия проекта:
+## Демо
 
-[GitHub Pages](https://andreireznikov.github.io/colors)
+[Ссылка на демо](https://andreireznikov.github.io/colors)
 
 ## Реализованные функции
 
@@ -64,4 +64,5 @@
 
 - npm run start — запуск dev-сервера
 - npm run build — сборка для продакшена
+
 
